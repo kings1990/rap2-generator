@@ -1,0 +1,19 @@
+[
+  {
+    "property": "retCode",
+    "description": "状态码",
+    "type": "String",
+    "resultFlag": false
+  },
+  {
+    "property": "msg",
+    "description": "状态码",
+    "type": "Number",
+    "resultFlag": false
+  },
+  {
+    "property": "result",
+    "description": "结果",
+    "resultFlag": true
+  }
+]

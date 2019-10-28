@@ -1,0 +1,44 @@
+{
+  "响应": {
+    "msg": null,
+    "retCode": null,
+    "result": [
+      {
+        "id": "1",
+        "name": "ws1"
+      },
+      {
+        "id": "2",
+        "name": "ws2"
+      }
+    ]
+  },
+  "0.json类型参考(返回对象)": {
+    "responseResultType": "Array",
+    "responseResultData": {
+      "responseResultDataType": "Object",
+      "description": ""
+    }
+  },
+  "1.json类型参考(数字集合)": {
+    "responseResultType": "Array",
+    "responseResultData": {
+      "responseResultDataType": "Number",
+      "description": "客户id集合"
+    }
+  },
+  "2.json类型参考(布尔集合)": {
+    "responseResultType": "Array",
+    "responseResultData": {
+      "responseResultDataType": "String",
+      "description": "字符串集合"
+    }
+  },
+  "3.json类型参考(布尔集合)": {
+    "responseResultType": "Array",
+    "responseResultData": {
+      "responseResultDataType": "Boolean",
+      "description": "是否有效集合"
+    }
+  }
+}
