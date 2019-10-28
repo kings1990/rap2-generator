@@ -106,20 +106,22 @@ body参数格式,支持4种格式:
 
 ```
 {
-  "domainAndPortUrl": "http://101.37.66.104:8077",
-  "sid": "jAZa7v21dBM74TP6Od88XFCUrt5HOnd9",
-  "sig": "8rrqEk0c4dzWK6_LFoMOpvMrb2M",
-  "interfaceId": 284,
-  "javaDirPath": "/Users/wilson/develop/workspace-aux/my/kings-rap2-generator/src/main/java/com/kings/rap/demomodel",
-  "requestJavaClassname": "KingsQueryVo",
-  "responseJavaClassname": "",
+  "domainAndPortUrl": "http://rap2api.taobao.org",
+  "sid": "eDj92yxUtwYaj-K52UtsoD2tDWCAK62Z",
+  "sig": "APDaceKunTDlPWdw0Solb6PiqeU",
+  "interfaceId": 1345234,
+  "javaDirPath": "/Users/wilson/develop/workspace-aux/my/kings-rap2-test/src/main/java/com/kings/test/model",
+  "requestJavaClassname": "MyQueryVo",
+  "responseJavaClassname": "MyBankCard",
   "bodyOption": "FORM_DATA",
   "requestParamsType": "QUERY_PARAMS",
   "responseResultType": "Array",
   "responseResultData": {
-    "responseResultDataType": "Number",
-    "description": "用户id集合"
-  }
+    "responseResultDataType": "Object",
+    "description": ""
+  },
+  
+  "responseConfigPath": "custom-responseTemplate.json"
 }
 ```
 
