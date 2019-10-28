@@ -22,6 +22,19 @@ public class KingsBankCard {
 本工具将解决这一部分的难题,实现简单配置自动导入
 
 ## 2.使用
+
+### 2.0 下载jar并在使用maven引入
+新建maven项目并且在项目中引入如下dependency
+```
+<dependency>
+    <groupId>com.kings</groupId>
+    <artifactId>kings-rap2-generator</artifactId>
+    <scope>system</scope>
+    <systemPath>jar包路径</systemPath>
+</dependency>
+```
+如果遇到不支持lombok,请安装idea lombok插件
+
 ### 2.1 配置
 
 > **domainAndPortUrl**  
@@ -86,6 +99,8 @@ body参数格式,支持4种格式:
 >>
 >>**description**:返回响应值的具体类型描述,如果responseResultType是Object类型此参数也可以不设置  
    
+> **responseConfigPath**  
+自定义响应模板路径,第3节有详细配置
 
 > demojson
 
