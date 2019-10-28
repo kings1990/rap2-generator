@@ -226,3 +226,6 @@ public class Test4ModelWithAuthor {
 1. 针对类里面包含泛型的需要指明泛型,否则不支持解析
 2. 所有的解析类需要放在同一个目录下
 3. 配置文件和自定义响应模板放在resource下,且是标准json
+
+## 5.演示
+基于[淘宝rap2](http://rap2.taobao.org/)的自动化导入,请看rap2generator.mp4
