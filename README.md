@@ -256,3 +256,6 @@ eclipse用户参考此文[https://blog.csdn.net/wangxiaotongfan/article/details/
 
 ## 5.演示
 基于[淘宝rap2](http://rap2.taobao.org/)的自动化导入,请看演示.mp4
+
+## 6.demo小程序
+[https://github.com/kings1990/kings-rap2-test](https://github.com/kings1990/kings-rap2-test)
