@@ -39,66 +39,66 @@
 
     <build>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>com.github.wvengen</groupId>-->
-<!--                <artifactId>proguard-maven-plugin</artifactId>-->
-<!--                <version>2.2.0</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        &lt;!&ndash; 混淆时刻，这里是打包的时候混淆&ndash;&gt;-->
-<!--                        <phase>install</phase>-->
-<!--                        <goals>-->
-<!--                            &lt;!&ndash; 使用插件的什么功能: 混淆&ndash;&gt;-->
-<!--                            <goal>proguard</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <attach>true</attach>-->
-<!--                    <attachArtifactClassifier>proguard</attachArtifactClassifier>-->
-<!--                    &lt;!&ndash; attach 的作用是在 install 与 deploy 时将生成的 pg 文件也安装与部署 &ndash;&gt;-->
-<!--                    <options>-->
-<!--                        &lt;!&ndash; JDK目标版本1.8&ndash;&gt;-->
-<!--                        <option>-target 1.8</option>-->
-<!--                        &lt;!&ndash; 不做收缩（删除注释、未被引用代码）&ndash;&gt;-->
-<!--                        <option>-dontshrink</option>-->
-<!--                        &lt;!&ndash; 不做优化（变更代码实现逻辑）&ndash;&gt;-->
-<!--                        <option>-dontoptimize</option>-->
-<!--                        &lt;!&ndash; 不路过非公用类文件及成员&ndash;&gt;-->
-<!--                        <option>-dontskipnonpubliclibraryclasses</option>-->
-<!--                        <option>-dontskipnonpubliclibraryclassmembers</option>-->
-<!--                        &lt;!&ndash; 优化时允许访问并修改有修饰符的类和类的成员 &ndash;&gt;-->
-<!--                        <option>-allowaccessmodification</option>-->
-<!--                        &lt;!&ndash; 不混淆所有包名，本人测试混淆后WEB项目问题实在太多，毕竟Spring配置中有大量固定写法的包名&ndash;&gt;-->
-<!--                        <option>-keeppackagenames</option>-->
-<!--                        <option>-dontusemixedcaseclassnames</option>-->
-<!--                        -->
-<!--                        <option>-keep class com.kings.rap2.config.** {*;}</option>-->
-<!--                        <option>-keep class com.kings.rap2.demomodel.** {*;}</option>-->
-<!--                        <option>-keep class com.kings.rap2.test.** {*;}</option>-->
-<!--                        <option>-keep class com.kings.rap2.util.** {*;}</option>-->
-<!--                        <option>-keepnames class ** {*;}</option>-->
-<!--                        <option>-keepnames enum ** {*;}</option>-->
-<!--                        -->
-<!--                    </options>-->
-<!--                    <libs>-->
-<!--                        <lib>${java.home}/lib/rt.jar</lib>-->
-<!--                        <lib>${java.home}/lib/jce.jar</lib>-->
-<!--                    </libs>-->
-<!--                    &lt;!&ndash; 对什么东西进行加载，这里仅有classes成功，不可能对配置文件及JSP混淆吧&ndash;&gt;-->
-<!--                    <injar>classes</injar>-->
-<!--                    <outjar>${project.build.finalName}-pg.jar</outjar>-->
-<!--                    &lt;!&ndash; 输出目录&ndash;&gt;-->
-<!--                    <outputDirectory>${project.build.directory}</outputDirectory>-->
-<!--                </configuration>-->
-<!--                <dependencies>-->
-<!--                    <dependency>-->
-<!--                        <groupId>net.sf.proguard</groupId>-->
-<!--                        <artifactId>proguard-base</artifactId>-->
-<!--                        <version>6.2.0</version>-->
-<!--                    </dependency>-->
-<!--                </dependencies>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>com.github.wvengen</groupId>
+                <artifactId>proguard-maven-plugin</artifactId>
+                <version>2.2.0</version>
+                <executions>
+                    <execution>
+                        <!-- 混淆时刻，这里是打包的时候混淆-->
+                        <phase>install</phase>
+                        <goals>
+                            <!-- 使用插件的什么功能: 混淆-->
+                            <goal>proguard</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <attach>true</attach>
+                    <attachArtifactClassifier>proguard</attachArtifactClassifier>
+                    <!-- attach 的作用是在 install 与 deploy 时将生成的 pg 文件也安装与部署 -->
+                    <options>
+                        <!-- JDK目标版本1.8-->
+                        <option>-target 1.8</option>
+                        <!-- 不做收缩（删除注释、未被引用代码）-->
+                        <option>-dontshrink</option>
+                        <!-- 不做优化（变更代码实现逻辑）-->
+                        <option>-dontoptimize</option>
+                        <!-- 不路过非公用类文件及成员-->
+                        <option>-dontskipnonpubliclibraryclasses</option>
+                        <option>-dontskipnonpubliclibraryclassmembers</option>
+                        <!-- 优化时允许访问并修改有修饰符的类和类的成员 -->
+                        <option>-allowaccessmodification</option>
+                        <!-- 不混淆所有包名，本人测试混淆后WEB项目问题实在太多，毕竟Spring配置中有大量固定写法的包名-->
+                        <option>-keeppackagenames</option>
+                        <option>-dontusemixedcaseclassnames</option>
+                        
+                        <option>-keep class com.kings.rap2.config.** {*;}</option>
+                        <option>-keep class com.kings.rap2.demomodel.** {*;}</option>
+                        <option>-keep class com.kings.rap2.test.** {*;}</option>
+                        <option>-keep class com.kings.rap2.util.** {*;}</option>
+                        <option>-keepnames class ** {*;}</option>
+                        <option>-keepnames enum ** {*;}</option>
+                        
+                    </options>
+                    <libs>
+                        <lib>${java.home}/lib/rt.jar</lib>
+                        <lib>${java.home}/lib/jce.jar</lib>
+                    </libs>
+                    <!-- 对什么东西进行加载，这里仅有classes成功，不可能对配置文件及JSP混淆吧-->
+                    <injar>classes</injar>
+                    <outjar>${project.build.finalName}-pg.jar</outjar>
+                    <!-- 输出目录-->
+                    <outputDirectory>${project.build.directory}</outputDirectory>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.sf.proguard</groupId>
+                        <artifactId>proguard-base</artifactId>
+                        <version>6.2.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
 </project>
