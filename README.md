@@ -245,7 +245,7 @@ public class Test4ModelWithAuthor {
 2. 所有的解析类需要放在同一个目录下
 3. 配置文件和自定义响应模板放在resource下,且是标准json
 
-### 4.1 Eclpise用户
+### 4.0 Eclpise用户
 eclipse用户参考此文[https://blog.csdn.net/wangxiaotongfan/article/details/82660523](https://blog.csdn.net/wangxiaotongfan/article/details/82660523),必须要修改.classpath的xml文件
 ```
 <classpathentry kind="src" path="src/main/java"/>
