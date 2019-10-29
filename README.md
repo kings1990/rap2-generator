@@ -23,7 +23,7 @@ public class KingsBankCard {
 
 ## 2.使用
 
-### 2.0 下载jar并在使用maven引入
+### 2.0 maven引入
 新建maven项目并且在项目中引入如下dependency
 ```
 <dependencies>
