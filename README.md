@@ -26,12 +26,28 @@ public class KingsBankCard {
 ### 2.0 下载jar并在使用maven引入
 新建maven项目并且在项目中引入如下dependency
 ```
-<dependency>
-    <groupId>com.kings</groupId>
-    <artifactId>kings-rap2-generator</artifactId>
-    <scope>system</scope>
-    <systemPath>jar包路径</systemPath>
-</dependency>
+<dependencies>
+    <dependency>
+        <groupId>com.kings</groupId>
+        <artifactId>kings-rap2-generator</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+</dependencies>
+<profiles>
+    <profile>
+        <id>rdc-private-repo</id>
+        <repositories>
+            <repository>
+                <id>rdc-releases</id>
+                <url>https://repo.rdc.aliyun.com/repository/109005-release-WrGuTW/</url>
+            </repository>
+            <repository>
+                <id>rdc-snapshots</id>
+                <url>https://repo.rdc.aliyun.com/repository/109005-snapshot-y8gJMC/</url>
+            </repository>
+        </repositories>
+    </profile>
+</profiles>
 ```
 如果遇到不支持lombok,请安装idea lombok插件
 
@@ -229,5 +245,14 @@ public class Test4ModelWithAuthor {
 2. 所有的解析类需要放在同一个目录下
 3. 配置文件和自定义响应模板放在resource下,且是标准json
 
+### 4.1 Eclpise用户
+eclipse用户参考此文[https://blog.csdn.net/wangxiaotongfan/article/details/82660523](https://blog.csdn.net/wangxiaotongfan/article/details/82660523),必须要修改.classpath的xml文件
+```
+<classpathentry kind="src" path="src/main/java"/>
+<classpathentry kind="src" path="src/main/resources"/>
+<classpathentry kind="src" path="src/test/java"/>
+<classpathentry kind="src" path="src/test/resources"/>
+``` 
+
 ## 5.演示
-基于[淘宝rap2](http://rap2.taobao.org/)的自动化导入,请看rap2generator.mp4
+基于[淘宝rap2](http://rap2.taobao.org/)的自动化导入,请看演示.mp4
