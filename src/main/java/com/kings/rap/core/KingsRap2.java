@@ -62,13 +62,14 @@ public class KingsRap2 {
         ParseConfig parseConfig = getParseConfig();
         
         //配置
+        
         String sid = parseConfig.getSid();
         String sig = parseConfig.getSig();
         int interfaceId = parseConfig.getInterfaceId();
-        String javaDirPath = parseConfig.getJavaDirPath();
-        if(!javaDirPath.endsWith("/")){
-            javaDirPath = javaDirPath+"/";
-        }
+        
+        String modelPackageName = parseConfig.getPackageName();
+        modelPackageName = modelPackageName.replaceAll("\\.","/");
+        String javaDirPath = System.getProperty("user.dir")+"/src/main/java/"+ modelPackageName +"/";;
         
         final String requestJavaClassname = parseConfig.getRequestJavaClassname();
         final String responseJavaClassname = parseConfig.getResponseJavaClassname();

@@ -21,12 +21,12 @@ public class ParseConfig {
      */
     private String sig;
 
-    public ParseConfig(String domainAndPortUrl, String sid, String sig, int interfaceId, String javaDirPath, String requestJavaClassname, String responseJavaClassname, Summary.BodyOption bodyOption, Summary.RequestParamsType requestParamsType, ResponseResultType responseResultType, ResponseResultData responseResultData) {
+    public ParseConfig(String domainAndPortUrl, String sid, String sig, int interfaceId, String packageName, String requestJavaClassname, String responseJavaClassname, Summary.BodyOption bodyOption, Summary.RequestParamsType requestParamsType, ResponseResultType responseResultType, ResponseResultData responseResultData) {
         this.domainAndPortUrl = domainAndPortUrl;
         this.sid = sid;
         this.sig = sig;
         this.interfaceId = interfaceId;
-        this.javaDirPath = javaDirPath;
+        this.packageName = packageName;
         this.requestJavaClassname = requestJavaClassname;
         this.responseJavaClassname = responseJavaClassname;
         this.bodyOption = bodyOption;
@@ -39,10 +39,11 @@ public class ParseConfig {
      * 接口id
      */
     private int interfaceId;
+
     /**
-     * 解析java类路径
+     * 解析java类包名
      */
-    private String javaDirPath;
+    private String packageName;
     /**
      * 请求参数类名
      */

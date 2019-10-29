@@ -53,8 +53,8 @@ rap2的cookie中的参数koa.sid.sig
 rap2编辑api接口地址参数中的itf参数,如链接地址是```http:domain/organization/repository/editor?id=25&itf=285```,则interfaceId=285
 
 
-> **javaDirPath**  
-解析的java类目录,如```/Users/wilson/develop/workspace-aux/my/kings-rap2-generator/src/main/java/com/kings/rap/demomodel/```,需要注意得把所有的实体类放在该目录下,因为要支持递归查找
+> **packageName**  
+解析的java类包路径,如```com.kings.rap.demomodel```,需要注意得把所有的实体类放在该目录下,因为要支持递归查找
 
 
 > **requestJavaClassname**  
@@ -110,7 +110,7 @@ body参数格式,支持4种格式:
   "sid": "eDj92yxUtwYaj-K52UtsoD2tDWCAK62Z",
   "sig": "APDaceKunTDlPWdw0Solb6PiqeU",
   "interfaceId": 1345234,
-  "javaDirPath": "/Users/wilson/develop/workspace-aux/my/kings-rap2-test/src/main/java/com/kings/test/model",
+  "packageName": "com.kings.rap.demomodel",
   "requestJavaClassname": "MyQueryVo",
   "responseJavaClassname": "MyBankCard",
   "bodyOption": "FORM_DATA",

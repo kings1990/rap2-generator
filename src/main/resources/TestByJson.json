@@ -3,7 +3,7 @@
   "sid": "jAZa7v21dBM74TP6Od88XFCUrt5HOnd9",
   "sig": "8rrqEk0c4dzWK6_LFoMOpvMrb2M",
   "interfaceId": 284,
-  "javaDirPath": "/Users/wilson/develop/workspace-aux/my/kings-rap2-generator/src/main/java/com/kings/rap/demomodel/",
+  "packageName": "com.kings.rap.demomodel",
   "requestJavaClassname": "KingsQueryVo",
   "responseJavaClassname": "",
   "bodyOption": "FORM_DATA",

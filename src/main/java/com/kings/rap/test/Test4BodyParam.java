@@ -14,7 +14,7 @@ public class Test4BodyParam {
         //接口itf参数
         int interfaceId = 280;
         //java类路径
-        String javaDirPath = "/Users/wilson/develop/workspace-aux/my/kings-rap2-generator/src/main/java/com/kings/rap/demomodel/";
+        String packageName = "com.kings.rap.demomodel";
         //request和response类名 不带java
         String requestJavaClassname = "KingsQueryVo";
         String responseJavaClassname = "KingsVo";
@@ -23,7 +23,7 @@ public class Test4BodyParam {
         ResponseResultType responseResultType = ResponseResultType.Object;
         ResponseResultData responseResultData = new ResponseResultData(ResponseResultData.ResponseResultDataType.Object,"KingsVo");
         
-        ParseConfig parseConfig = new ParseConfig(domainAndPortUrl,sid,sig,interfaceId,javaDirPath,requestJavaClassname,responseJavaClassname,bodyOption,requestParamsType,responseResultType,responseResultData);
+        ParseConfig parseConfig = new ParseConfig(domainAndPortUrl,sid,sig,interfaceId,packageName,requestJavaClassname,responseJavaClassname,bodyOption,requestParamsType,responseResultType,responseResultData);
         KingsRap2 kingsRap2 = new KingsRap2();
         kingsRap2.setParseConfig(parseConfig);
         kingsRap2.doRap2();

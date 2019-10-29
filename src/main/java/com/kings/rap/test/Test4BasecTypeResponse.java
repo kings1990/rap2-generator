@@ -15,7 +15,7 @@ public class Test4BasecTypeResponse {
         //接口itf参数
         int interfaceId = 283;
         //java类路径
-        String javaDirPath = "/Users/wilson/develop/workspace-aux/my/kings-rap2-generator/src/main/java/com/kings/rap/demomodel/";
+        String packageName = "com.kings.rap.demomodel";
         //request和response类名 不带java
         String requestJavaClassname = "KingsQueryVo";
         String responseJavaClassname = "";
@@ -27,7 +27,7 @@ public class Test4BasecTypeResponse {
         ResponseResultData responseResultData = new ResponseResultData(ResponseResultData.ResponseResultDataType.String,"customerCode集合");
         
         
-        ParseConfig parseConfig = new ParseConfig(domainAndPortUrl,sid,sig,interfaceId,javaDirPath,requestJavaClassname,responseJavaClassname,bodyOption,requestParamsType,responseResultType,responseResultData);
+        ParseConfig parseConfig = new ParseConfig(domainAndPortUrl,sid,sig,interfaceId,packageName,requestJavaClassname,responseJavaClassname,bodyOption,requestParamsType,responseResultType,responseResultData);
         KingsRap2 kingsRap2 = new KingsRap2();
         kingsRap2.setParseConfig(parseConfig);
         kingsRap2.doRap2();
