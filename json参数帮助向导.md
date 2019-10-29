@@ -1,5 +1,5 @@
 # 说明
-此部分是针对responseResultType、responseResultData、responseResultDataType部分帮助说明,参考下面各种返回值所需要的配置形式
+此部分是针对解析配置文件中responseResultType、responseResultData、responseResultDataType部分帮助说明,参考下面各种返回值所需要的配置形式
 
 # 返回数字
 ```
