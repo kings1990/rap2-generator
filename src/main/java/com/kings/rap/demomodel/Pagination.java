@@ -12,14 +12,14 @@ import java.util.List;
  * 功能:分页对象
  * </p>
  *
- * @param <T> the type parameter
+ * @param <KingsVo> the type parameter
  * @author Kings
  * @ClassName Pagination
  * @Version V1.0.
  * @date 2019.10.28 08:45:51
  */
 @Data
-public class Pagination<T> implements Serializable {
+public class Pagination<KingsVo> implements Serializable {
     
     /**
      * 当前页
