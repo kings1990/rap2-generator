@@ -108,10 +108,10 @@ body参数格式,支持4种格式:
   "domainAndPortUrl": "http://rap2api.taobao.org",
   "sid": "eDj92yxUtwYaj-K52UtsoD2tDWCAK62Z",
   "sig": "APDaceKunTDlPWdw0Solb6PiqeU",
-  "interfaceId": 1345234,
-  "packageName": "com.kings.rap.demomodel",
-  "requestJavaClassname": "MyQueryVo",
-  "responseJavaClassname": "MyBankCard",
+  "interfaceId": 1349715,
+  "packageName": "com.kings.rap2.test.model",
+  "requestJavaClassname": "KingsQueryVo",
+  "responseJavaClassname": "KingsHobby",
   "bodyOption": "FORM_DATA",
   "requestParamsType": "QUERY_PARAMS",
   "responseResultType": "Array",
@@ -119,8 +119,7 @@ body参数格式,支持4种格式:
     "responseResultDataType": "Object",
     "description": ""
   },
-  
-  "responseConfigPath": "custom-responseTemplate.json"
+  "responseConfigPath": "my-responseTemplate.json"
 }
 ```
 
@@ -241,4 +240,12 @@ eclipse用户参考此文[https://blog.csdn.net/wangxiaotongfan/article/details/
 基于[淘宝rap2](http://rap2.taobao.org/)的自动化导入,请看演示.mp4
 
 ## 6.demo小程序
-[https://github.com/kings1990/kings-rap2-test](https://github.com/kings1990/kings-rap2-test)
+[https://github.com/kings1990/kings-rap2-generator-demo](https://github.com/kings1990/kings-rap2-generator-demo)
+
+淘宝rap2(请勿乱删数据)
+```
+地址:http://rap2.taobao.org/
+仓库:rap2-generator-test
+账号:rap2-generator@qq.com
+密码:123456
+```
