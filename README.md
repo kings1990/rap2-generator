@@ -29,7 +29,7 @@ public class KingsBankCard {
 <dependency>
     <groupId>io.github.kings1990</groupId>
     <artifactId>kings-rap2-generator</artifactId>
-    <version>1.0.1-RELEASE</version>
+    <version>1.0.0-RELEASE</version>
 </dependency>
 ```
 如果遇到不支持lombok,请安装idea lombok插件
