@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.kings1990</groupId>
     <artifactId>kings-rap2-generator</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.1-RELEASE</version>
     <description>rap2 自动化导入</description>
     <packaging>jar</packaging>
     <dependencies>
