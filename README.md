@@ -26,28 +26,11 @@ public class KingsBankCard {
 ### 2.0 maven引入
 新建maven项目并且在项目中引入如下dependency
 ```
-<dependencies>
-    <dependency>
-        <groupId>com.kings</groupId>
-        <artifactId>kings-rap2-generator</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </dependency>
-</dependencies>
-<profiles>
-    <profile>
-        <id>rdc-private-repo</id>
-        <repositories>
-            <repository>
-                <id>rdc-releases</id>
-                <url>https://repo.rdc.aliyun.com/repository/109005-release-WrGuTW/</url>
-            </repository>
-            <repository>
-                <id>rdc-snapshots</id>
-                <url>https://repo.rdc.aliyun.com/repository/109005-snapshot-y8gJMC/</url>
-            </repository>
-        </repositories>
-    </profile>
-</profiles>
+<dependency>
+    <groupId>io.github.kings1990</groupId>
+    <artifactId>kings-rap2-generator</artifactId>
+    <version>1.0.0-RELEASE</version>
+</dependency>
 ```
 如果遇到不支持lombok,请安装idea lombok插件
 
