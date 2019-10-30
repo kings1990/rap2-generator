@@ -54,7 +54,7 @@ public class KingsBankCard {
 ### 2.1 配置
 
 > **domainAndPortUrl**  
-rap2域名和端口,F12更新文档时候可查看
+rap2后端数据API服务器(F12随便更新一个文档就可见)
 
 
 > **sid**  
