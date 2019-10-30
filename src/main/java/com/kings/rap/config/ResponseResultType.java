@@ -6,9 +6,6 @@ package com.kings.rap.config;
  * </p>
  *
  * @author Kings
- * @ClassName ResponseResultType
- * @Version V1.0.
- * @date 2019.10.26 14:03:55
  */
 public enum  ResponseResultType {
     /**

@@ -14,9 +14,6 @@ import java.util.List;
  *
  * @param <T> the type parameter
  * @author Kings
- * @ClassName Pagination
- * @Version V1.0.
- * @date 2019.10.28 08:45:51
  */
 @Data
 public class PaginationKingsVo<T> implements Serializable {

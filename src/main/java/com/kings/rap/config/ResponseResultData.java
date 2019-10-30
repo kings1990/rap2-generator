@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
  * </p>
  *
  * @author Kings
- * @ClassName ResponseResultData
- * @Version V1.0.
- * @date 2019.10.26 14:03:32
  */
 @Data
 @AllArgsConstructor
@@ -33,9 +30,6 @@ public class ResponseResultData {
      * </p>
      *
      * @author Kings
-     * @ClassName ResponseResultDataType
-     * @Version V1.0.
-     * @date 2019.10.26 14:03:32
      */
     public enum ResponseResultDataType {
         /**

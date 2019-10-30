@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
  * </p>
  *
  * @author Kings
- * @ClassName ResponseConfig
- * @Version V1.0.
- * @date 2019.10.28 13:25:52
  */
 @Data
 @AllArgsConstructor
