@@ -33,7 +33,6 @@ public class KingsBankCard {
 ## 2.使用
 
 ### 2.0 maven引入
-最新版本
 ```
 <dependency>
     <groupId>io.github.kings1990</groupId>
