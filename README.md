@@ -41,7 +41,8 @@ public class KingsBankCard {
 `必传`(v1.0.2)  
 rap2后端数据API服务器地址,如:```http://rap2api.taobao.org```
 
-> **doloresUrl**`非必传`(v1.0.2)  
+> **doloresUrl**  
+`非必传`(v1.0.2)  
 rap2前端静态资源,如:```http://rap2.taobao.org```
 
 > **~~domainAndPortUrl~~**    
@@ -111,9 +112,11 @@ body参数格式,支持4种格式:
 
 ```
 {
-  "domainAndPortUrl": "http://rap2api.taobao.org",
+  "delosUrl": "http://rap2api.taobao.org",
+  "doloresUrl": "http://rap2.taobao.org",
   "sid": "eDj92yxUtwYaj-K52UtsoD2tDWCAK62Z",
   "sig": "APDaceKunTDlPWdw0Solb6PiqeU",
+  "repositoryId":235211,
   "interfaceId": 1349715,
   "packageName": "com.kings.rap2.test.model",
   "requestJavaClassname": "KingsQueryVo",
