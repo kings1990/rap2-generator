@@ -1,5 +1,14 @@
 # kings-rap2-generator
 
+## 最新版本
+```
+<dependency>
+    <groupId>io.github.kings1990</groupId>
+    <artifactId>kings-rap2-generator</artifactId>
+    <version>1.0.1-RELEASE</version>
+</dependency>
+```
+
 ## 0.背景
 前后端分离利用rap2的时候需要将java实体类的注释拷贝到rap2上,字段一多十分麻烦,官方目前不支持将实体类解析导入.本工具实现自动化将实体类解析导入rap2
 
@@ -29,7 +38,7 @@ public class KingsBankCard {
 <dependency>
     <groupId>io.github.kings1990</groupId>
     <artifactId>kings-rap2-generator</artifactId>
-    <version>1.0.1-RELEASE</version>
+    <version>版本号</version>
 </dependency>
 ```
 如果遇到不支持lombok,请安装idea lombok插件
