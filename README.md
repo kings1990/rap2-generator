@@ -29,57 +29,63 @@ public class KingsBankCard {
 <dependency>
     <groupId>io.github.kings1990</groupId>
     <artifactId>kings-rap2-generator</artifactId>
-    <version>1.0.1-RELEASE</version>
+    <version>1.0.2-RELEASE</version>
 </dependency>
 ```
 如果遇到不支持lombok,请安装idea lombok插件
 
 ### 2.1 配置
 
-> **domainAndPortUrl**  
-rap2后端数据API服务器(F12随便更新一个文档就可见)
+> **delosUrl**  
+`非必传`(v1.0.1)  
+`必传`(v1.0.2)  
+rap2后端数据API服务器地址,如:```http://rap2api.taobao.org```
 
+> **doloresUrl**`非必传`(v1.0.2)  
+rap2前端静态资源,如:```http://rap2.taobao.org```
 
-> **sid**  
+> **~~domainAndPortUrl~~**    
+rap2后端数据API服务器(不知道的去浏览器F12随便更新一个文档去取请求域名)  
+`必传`(v1.0.1)   
+`废除`(v1.0.2),使用delosUrl代替domainAndPortUrl
+
+> **sid**`必传`  
 rap2的cookie中的参数koa.sid
 
 
-> **sig**  
+> **sig**`必传`  
 rap2的cookie中的参数koa.sid.sig
 
 
-> **interfaceId**  
+> **interfaceId**`必传`  
 rap2编辑api接口地址参数中的itf参数,如链接地址是```http:domain/organization/repository/editor?id=25&itf=285```,则interfaceId=285
 
+> **repositoryId**`非必传`(v1.0.2)  
+接口仓库id,值为接口链接中的id,即如果链接连接是```http://rap2.taobao.org/repository/editor?id=235211&itf=1349709```,
+则repositoryId=235211,加了此参数,执行程序会返回链接
 
-> **packageName**  
+> **packageName**`必传`  
 解析的java类包路径,如```com.kings.rap.demomodel```,需要注意得把所有的实体类放在该目录下,因为要支持递归查找
 
-
-> **requestJavaClassname**  
+> **requestJavaClassname**`必传`  
 请求参数对应的类名,如**KingsQueryVo**
 
-
-> **responseJavaClassname**  
+> **responseJavaClassname**`必传`  
 响应参数对应的类名,如**KingsQueryVo**
 
-
-> **bodyOption**  
+> **bodyOption**`必传`  
 body参数格式,支持4种格式:  
 >>**FORM_DATA**  
 **X_WWW_FORM_URLENCODED**  
 **RAW**  
 **BINARY**
 
-
-> **requestParamsType**  
+> **requestParamsType**`必传`  
 请求参数类型:只有2种格式:  
 >>**BODY_PARAMS**:restful POST参数    
 **QUERY_PARAMS**:restful GET参数
 
-
-
-> **responseResultType**  
+> **responseResultType**`必传`  
 响应中result对应的类型,目前包含5种类型:  
 >>**Object**:对象类型  
 **Array**:数组集合类型  
@@ -87,8 +93,7 @@ body参数格式,支持4种格式:
 **Boolean**:布尔类型  
 **String**:字符串类型
 
-
-> **responseResultData**  
+> **responseResultData**`必传`  
 响应中result对应的值的具体类型,其包含2个子属性  
 >>**responseResultDataType**:返回响应值的具体类型,目前包含4种类型:  
 >>>**Object**:对象类型  
@@ -96,9 +101,10 @@ body参数格式,支持4种格式:
 >>>**Boolean**:布尔类型  
 >>>**String**:字符串类型
 >>
->>**description**:返回响应值的具体类型描述,如果responseResultType是Object类型此参数也可以不设置  
+>>**description**:`非必传`  
+返回响应值的具体类型描述,如果responseResultType是Object类型此参数也可以不设置  
    
-> **responseConfigPath**  
+> **responseConfigPath**`非必传`  
 自定义响应模板路径,第3节有详细配置
 
 > demojson
