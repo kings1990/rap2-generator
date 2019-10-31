@@ -24,12 +24,12 @@ public class KingsBankCard {
 ## 2.使用
 
 ### 2.0 maven引入
-新建maven项目并且在项目中引入如下dependency
+最新版本
 ```
 <dependency>
     <groupId>io.github.kings1990</groupId>
     <artifactId>kings-rap2-generator</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.1-RELEASE</version>
 </dependency>
 ```
 如果遇到不支持lombok,请安装idea lombok插件
