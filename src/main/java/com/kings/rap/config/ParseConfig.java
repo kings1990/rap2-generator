@@ -11,7 +11,19 @@ public class ParseConfig {
     /**
      * 域名端口
      */
+    @Deprecated
     private String domainAndPortUrl;
+
+    /**
+     * rap2后端数据API服务器地址
+     */
+    private String delosUrl;
+
+    /**
+     * rap2前端静态资源
+     */
+    private String doloresUrl;
+    
     /**
      * cookie sid
      */
@@ -39,6 +51,11 @@ public class ParseConfig {
      * 接口id
      */
     private int interfaceId;
+
+    /**
+     * 仓库id
+     */
+    private int repositoryId;
 
     /**
      * 解析java类包名

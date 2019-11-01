@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kings.rap.config.*;
 import okhttp3.*;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -61,8 +62,7 @@ public class KingsRap2 {
     public void doRap2() throws Exception {
         ParseConfig parseConfig = getParseConfig();
         
-        //配置
-        
+        //配置开始
         String sid = parseConfig.getSid();
         String sig = parseConfig.getSig();
         int interfaceId = parseConfig.getInterfaceId();
@@ -78,19 +78,24 @@ public class KingsRap2 {
         Summary.RequestParamsType requestParamsType = parseConfig.getRequestParamsType();
         ResponseResultType responseResultType = parseConfig.getResponseResultType();
         ResponseResultData responseResultData = parseConfig.getResponseResultData();
-        String domainAndPortUrl = parseConfig.getDomainAndPortUrl();
+//      String domainAndPortUrl = parseConfig.getDomainAndPortUrl(); 1.0.2
         String responseConfigPath = parseConfig.getResponseConfigPath();
-        //配置
+
+        //1.0.2新配置
+        int repositoryId = parseConfig.getRepositoryId();
+        String delosUrl = parseConfig.getDelosUrl();
+        String doloresUrl = parseConfig.getDoloresUrl();
+        //配置结束
 
         final String cookie = "koa.sid=" + sid + ";koa.sid.sig=" + sig;
-        final String updateUrl = String.format(domainAndPortUrl+TARGET_URL,interfaceId);
+        final String updateUrl = String.format(delosUrl+TARGET_URL,interfaceId);
         
         JSONArray jsonArray = new JSONArray();
         
         JSONArray all = new JSONArray();
         //处理request
         String parentId = "-1";
-        JSONArray resultRequest = parse(jsonArray,requestParamsType.name(), REQUEST, interfaceId, 1, parentId, javaDirPath,requestJavaClassname,null);
+        JSONArray resultRequest = parse(jsonArray,requestParamsType.name(), REQUEST, interfaceId, parentId, javaDirPath,requestJavaClassname,null);
         all.addAll(resultRequest);
 
 
@@ -107,9 +112,6 @@ public class KingsRap2 {
 
         InputStream inputStream = KingsRap2.class.getResourceAsStream("/"+responseConfigPath);
         String jsonString = new BufferedReader(new InputStreamReader(inputStream)).lines().parallel().collect(Collectors.joining(System.lineSeparator()));
-        
-//        File file = new File(responseConfigPath);
-//        String jsonString = FileUtils.readFileToString(file);
         List<ResponseTemplateConfig> responseConfigList = JSONArray.parseArray(jsonString,ResponseTemplateConfig.class);
         long resultCount = responseConfigList.stream().filter(ResponseTemplateConfig::isResultFlag).count();
         if(resultCount != 1){
@@ -135,30 +137,9 @@ public class KingsRap2 {
         }
         parentId = "memory-"+responseConfigList.size();
         
-        
-//         
-//        JSONObject jsonObjectMsg = dealCommonParam("msg", "消息", "String", "-1", interfaceId, "response");
-//        jsonArray.add(jsonObjectMsg);
-//        idx++;
-//        JSONObject jsonObjectCode = dealCommonParam("retCode", "状态码", "Integer", "-1", interfaceId, "response");
-//        jsonArray.add(jsonObjectCode);
-//        idx++;
-//        if(!"Object".equals(dealResponseType)){
-//            //返回 结果(类型:注释) 如 结果(String:customerCode集合)
-//            JSONObject jsonObjectResult = dealCommonParam("result", "结果("+dealResponseType+":"+responseResultData.getDescription()+")", responseResultType.getExp(), "-1", interfaceId, "response");
-//            jsonArray.add(jsonObjectResult);
-//        } else {
-//            //解析内部对象
-//            JSONObject jsonObjectResult = dealCommonParam("result", "结果", responseResultType.getExp(), "-1", interfaceId, "response");
-//            jsonArray.add(jsonObjectResult);
-//        }
-//        idx++;
-//        parentId = "memory-3";
-        
-        
-        JSONArray resultResponse = parse(jsonArray, requestParamsType.name(), RESPONSE, interfaceId, 1, parentId, javaDirPath,responseJavaClassname,responseResultData);
+        JSONArray resultResponse = parse(jsonArray, requestParamsType.name(), RESPONSE, interfaceId, parentId, javaDirPath,responseJavaClassname,responseResultData);
         all.addAll(resultResponse);
-//        System.out.println(all);
+
         JSONObject jsonObject = new JSONObject();
         Summary summary = new Summary(bodyOption.name(),requestParamsType.name());
         jsonObject.put("properties",new JSONArray());
@@ -167,9 +148,18 @@ public class KingsRap2 {
         post(updateUrl,jsonObject.toString(),cookie);
         jsonObject.put("properties",all);
         String result = post(updateUrl,jsonObject.toString(),cookie);
+
+        String resultInfo;
+        if(repositoryId != 0 && StringUtils.isNotBlank(doloresUrl)){
+            resultInfo = String.format("执行成功,接口地址:%s/repository/editor?id=%d&itf=%d",doloresUrl,repositoryId,interfaceId);
+        } else {
+            resultInfo = "执行成功!";
+        }
+        
+        System.out.println(resultInfo);
     }
 
-    private JSONArray parse(JSONArray jsonArray,String  requestParamsType ,String scope, int interfaceId, int id, String parentId, String javaDirPath,String className,ResponseResultData responseResultData) throws Exception {
+    private JSONArray parse(JSONArray jsonArray,String  requestParamsType ,String scope, int interfaceId, String parentId, String javaDirPath,String className,ResponseResultData responseResultData) throws Exception {
         List<String> annotationList = new ArrayList<>();
         List<String> fieldList = new ArrayList<>();
         List<String> fieldTypeList = new ArrayList<>();
@@ -241,7 +231,7 @@ public class KingsRap2 {
                     jsonArray.add(jsonObject);
                     //只有对象才会递归解析
                     if ("Object".equals(filedType)) {
-                        parse(jsonArray, requestParamsType, scope, interfaceId, idx, idStr, javaDirPath, fileType, null);
+                        parse(jsonArray, requestParamsType, scope, interfaceId, idStr, javaDirPath, fileType, null);
                     }
                 } else {
                     jsonArray.add(jsonObject);
@@ -292,6 +282,7 @@ public class KingsRap2 {
                 .header("Cookie", cookie)
                 .build();
         try (Response response = client.newCall(request).execute()) {
+            assert response.body() != null;
             return response.body().string();
         }
     }
@@ -303,6 +294,7 @@ public class KingsRap2 {
                 .header("Cookie", cookie)
                 .build();
         try (Response response = client.newCall(request).execute()) {
+            assert response.body() != null;
             return response.body().string();
         }
     }
