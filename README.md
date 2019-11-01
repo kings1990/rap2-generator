@@ -271,3 +271,7 @@ eclipse用户参考此文[https://blog.csdn.net/wangxiaotongfan/article/details/
 账号:rap2-generator@qq.com
 密码:123456
 ```
+
+## 7.如何贡献代码
+请查看[CONTRIBUTING.md](https://github.com/kings1990/kings-rap2-generator/blob/master/CONTRIBUTING.md)
+我们非常欢迎你提交好的优质代码和建议
