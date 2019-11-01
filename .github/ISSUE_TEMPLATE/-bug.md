@@ -1,7 +1,7 @@
 ---
 name: 提bug
 about: Create a report to help us improve
-title: ''
+title: bug:xxx报错
 labels: bug
 assignees: kings1990
 
