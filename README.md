@@ -264,7 +264,7 @@ eclipse用户参考此文[https://blog.csdn.net/wangxiaotongfan/article/details/
 ## 6.demo小程序
 [https://github.com/kings1990/kings-rap2-generator-demo](https://github.com/kings1990/kings-rap2-generator-demo)
 
-淘宝rap2(请勿乱删数据)
+淘宝rap2插件测试地址(请勿乱删数据)
 ```
 地址:http://rap2.taobao.org/
 仓库:rap2-generator-test
