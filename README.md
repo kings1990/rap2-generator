@@ -24,7 +24,7 @@ public class KingsBankCard {
 ## 2.使用
 
 ### 2.0 maven引入
-最新版本
+最新版本([search.maven.org](https://search.maven.org/search?q=kings-rap2-generator)搜索坐标kings-rap2-generator)
 ```
 <dependency>
     <groupId>io.github.kings1990</groupId>
@@ -107,6 +107,10 @@ body参数格式,支持4种格式:
    
 > **responseConfigPath**`非必传`  
 自定义响应模板路径,第3节有详细配置
+
+
+注意:`responseResultType`、`responseResultData属性可参考`[json参数帮助向导.md](https://github.com/kings1990/kings-rap2-generator/blob/master/json参数帮助向导.md)
+
 
 > demojson
 
