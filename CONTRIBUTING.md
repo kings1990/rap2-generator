@@ -7,6 +7,9 @@
 * 测试rap2地址：[rap2地址](http://rap2.taobao.org/repository)
 * 账号/密码:**rap2-generator@qq.com/123456**
 
+# 注意事项
+本地测试打包请把maven GPG插件去除
+
 # 测试
 测试demo地址：[https://github.com/kings1990/kings-rap2-generator-demo](https://github.com/kings1990/kings-rap2-generator-demo)，请发起测试代码的pull request，测试形式以junit的形式执行。
 

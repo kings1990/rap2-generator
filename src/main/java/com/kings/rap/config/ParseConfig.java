@@ -4,6 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * <p class="detail">
+ * 功能:解析配置类
+ * </p>
+ *
+ * @author Kings
+ * @version V1.0
+ * @date 2019.11.02
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +32,7 @@ public class ParseConfig {
      * rap2前端静态资源
      */
     private String doloresUrl;
-    
+
     /**
      * cookie sid
      */

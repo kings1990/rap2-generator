@@ -9,23 +9,23 @@ package com.kings.rap.config;
  */
 public enum  ResponseResultType {
     /**
-     * Object response result type.
+     * Object类型
      */
     Object("XXOO"),
     /**
-     * Array response result type.
+     * 数组和集合类型
      */
     Array("List"),
     /**
-     * Number response result type.
+     * 数字类型
      */
     Number("Integer"),
     /**
-     * Boolean response result type.
+     * 布尔类型
      */
     Boolean("Boolean"),
     /**
-     * String response result type.
+     * 字符串类型
      */
     String("String");
 

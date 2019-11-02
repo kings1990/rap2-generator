@@ -16,17 +16,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ResponseResultData {
     /**
-     * Response result data type.
+     * 响应结果枚举
      */
     private ResponseResultDataType responseResultDataType;
     /**
-     * Description.
+     * 响应结果描述
      */
     private String description;
 
     /**
      * <p class="detail">
-     * 功能:
+     * 功能:响应结果枚举
      * </p>
      *
      * @author Kings

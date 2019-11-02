@@ -248,6 +248,7 @@ public class Test4ModelWithAuthor {
 1. 针对类里面包含泛型的需要指明泛型,否则不支持解析
 2. 所有的解析类需要放在同一个目录下
 3. 配置文件和自定义响应模板放在resource下,且是标准json
+4. `sid`和`sig`可能会过期,如果程序中说需要重新登录,那就再登录一下并覆盖这2个参数
 
 ### 4.0 Eclpise用户
 eclipse用户参考此文[https://blog.csdn.net/wangxiaotongfan/article/details/82660523](https://blog.csdn.net/wangxiaotongfan/article/details/82660523),必须要修改.classpath的xml文件
