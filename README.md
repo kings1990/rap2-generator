@@ -4,7 +4,7 @@
 ```
 <dependency>
     <groupId>io.github.kings1990</groupId>
-    <artifactId>kings-rap2-generator</artifactId>
+    <artifactId>rap2-generator</artifactId>
     <version>1.0.3-RELEASE</version>
 </dependency>
 ```
@@ -37,7 +37,7 @@ public class KingsBankCard {
 ```
 <dependency>
     <groupId>io.github.kings1990</groupId>
-    <artifactId>kings-rap2-generator</artifactId>
+    <artifactId>rap2-generator</artifactId>
     <version>版本号</version>
 </dependency>
 ```
