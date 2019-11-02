@@ -5,7 +5,7 @@
 <dependency>
     <groupId>io.github.kings1990</groupId>
     <artifactId>kings-rap2-generator</artifactId>
-    <version>1.0.2-RELEASE</version>
+    <version>1.0.3-RELEASE</version>
 </dependency>
 ```
 
