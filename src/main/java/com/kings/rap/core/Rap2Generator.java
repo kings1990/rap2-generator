@@ -299,7 +299,7 @@ public class Rap2Generator {
 
     /**
      * <p class="detail">
-     * 功能:判断字段类型是否为时间类型,若字段写了多个注解则优先级为DateTimeFormat(spring)>JSONField(fastjson)>JsonFormat(jackson),异常就返回null
+     * 功能:判断字段类型是否为时间类型,若字段写了多个注解则优先级为DateTimeFormat(spring)>JSONField(fastjson)>JsonFormat(jackson),异常就返回""
      * </p>
      *
      * @param className :类名
@@ -323,9 +323,9 @@ public class Rap2Generator {
             if(jsonFormat != null){
                 return jsonFormat.pattern();
             }
-            return null;
+            return "";
         }catch (Exception e){
-            return null;
+            return "";
         }
     }
 
