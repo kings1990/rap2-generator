@@ -1,4 +1,4 @@
-package com.kings.rap.model;
+package io.github.kings1990.rap2.generator.model;
 
 import lombok.Data;
 

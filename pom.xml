@@ -152,6 +152,6 @@
 
     <!-->项目的版本管理地址<-->
     <scm>
-        <url>https://github.com/kings1990/kings-rap2-generator.git</url>
+        <url>https://github.com/kings1990/rap2-generator.git</url>
     </scm>
 </project>

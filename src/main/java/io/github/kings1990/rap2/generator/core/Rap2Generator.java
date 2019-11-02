@@ -1,11 +1,11 @@
-package com.kings.rap.core;
+package io.github.kings1990.rap2.generator.core;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kings.rap.config.*;
-import com.kings.rap.model.Rap2Response;
+import io.github.kings1990.rap2.generator.config.*;
+import io.github.kings1990.rap2.generator.model.Rap2Response;
 import okhttp3.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.format.annotation.DateTimeFormat;

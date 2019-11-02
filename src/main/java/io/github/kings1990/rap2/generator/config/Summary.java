@@ -1,4 +1,4 @@
-package com.kings.rap.config;
+package io.github.kings1990.rap2.generator.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
-package com.kings.rap.util;
+package io.github.kings1990.rap2.generator.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.kings.rap.config.ParseConfig;
+import io.github.kings1990.rap2.generator.config.ParseConfig;
 
 import java.io.BufferedReader;
 import java.io.IOException;

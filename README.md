@@ -1,4 +1,4 @@
-# kings-rap2-generator
+# rap2-generator
 
 ## 最新版本
 ```
@@ -33,7 +33,7 @@ public class KingsBankCard {
 ## 2.使用
 
 ### 2.0 maven引入
-最新版本([search.maven.org](https://search.maven.org/search?q=kings-rap2-generator)搜索坐标kings-rap2-generator)
+最新版本([search.maven.org](https://search.maven.org/search?q=rap2-generator)搜索坐标rap2-generator)
 ```
 <dependency>
     <groupId>io.github.kings1990</groupId>
@@ -118,7 +118,7 @@ body参数格式,支持4种格式:
 自定义响应模板路径,第3节有详细配置
 
 
-注意:`responseResultType`、`responseResultData属性可参考`[json参数帮助向导.md](https://github.com/kings1990/kings-rap2-generator/blob/master/json参数帮助向导.md)
+注意:`responseResultType`、`responseResultData属性可参考`[json参数帮助向导.md](https://github.com/kings1990/rap2-generator/blob/master/json参数帮助向导.md)
 
 
 > demojson
@@ -131,7 +131,7 @@ body参数格式,支持4种格式:
   "sig": "APDaceKunTDlPWdw0Solb6PiqeU",
   "repositoryId":235211,
   "interfaceId": 1349715,
-  "packageName": "com.kings.rap2.test.model",
+  "packageName": "io.github.kings1990.rap2.generator.test.model",
   "requestJavaClassname": "KingsQueryVo",
   "responseJavaClassname": "KingsHobby",
   "bodyOption": "FORM_DATA",
@@ -148,53 +148,12 @@ body参数格式,支持4种格式:
 ### 2.2 执行
 >a.使用json配置的形式执行(推荐)
 ```
-import com.kings.rap.config.ParseConfig;
-import com.kings.rap.core.KingsRap2;
-import com.kings.rap.util.ParseConfigJsonUtil;
-
-public class TestByJson {
-    public static void main(String[] args) throws Exception{
-        ParseConfig parseConfig = ParseConfigJsonUtil.parseByFile("TestByJson.json");
-        KingsRap2 kingsRap2 = new KingsRap2();
-        kingsRap2.setParseConfig(parseConfig);
-        kingsRap2.doRap2();
-    }
-}
-```
-
->b.使用代码的形式执行(不推荐)  
-```
-import com.kings.rap.config.ParseConfig;
-import com.kings.rap.config.ResponseResultData;
-import com.kings.rap.config.ResponseResultType;
-import com.kings.rap.config.Summary;
-import com.kings.rap.core.KingsRap2;
-
-public class Test4ModelWithAuthor {
-    
-    public static void main(String[] args) throws Exception{
-        String domainAndPortUrl = "http://101.37.66.104:8077";
-        //rap2 cookie
-        String sid = "c_IMAbZgZPFavzpFSxIK8BMmdQbXQUK2";
-        String sig = "UML5gNS9BqnkwCKlF7Gu2XJU-RM";
-        //接口itf参数
-        int interfaceId = 282;
-        //java类路径
-        String packageName = "com.kings.rap.demomodel";
-        //request和response类名 不带java
-        String requestJavaClassname = "ModelWithAuthor";
-        String responseJavaClassname = "KingsQueryVo";
-
-        Summary.BodyOption bodyOption = Summary.BodyOption.FORM_DATA;
-        Summary.RequestParamsType requestParamsType = Summary.RequestParamsType.QUERY_PARAMS;
-        ResponseResultType responseResultType = ResponseResultType.Array;
-        ResponseResultData responseResultData = new ResponseResultData(ResponseResultData.ResponseResultDataType.Object,"KingsQueryVo");
-        
-        ParseConfig parseConfig = new ParseConfig(domainAndPortUrl,sid,sig,interfaceId,packageName,requestJavaClassname,responseJavaClassname,bodyOption,requestParamsType,responseResultType,responseResultData);
-        KingsRap2 kingsRap2 = new KingsRap2();
-        kingsRap2.setParseConfig(parseConfig);
-        kingsRap2.doRap2();
-    }
+@Test
+public void testCustomResponseTemplate() throws Exception {
+    ParseConfig parseConfig = ParseConfigJsonUtil.parseByJsonFile("自定义响应模板.json");
+    Rap2Generator rap2Generator = new Rap2Generator();
+    rap2Generator.setParseConfig(parseConfig);
+    rap2Generator.generate();
 }
 ```
 
@@ -263,7 +222,7 @@ eclipse用户参考此文[https://blog.csdn.net/wangxiaotongfan/article/details/
 基于[淘宝rap2](http://rap2.taobao.org/)的自动化导入,请看演示.mp4
 
 ## 6.demo小程序
-[https://github.com/kings1990/kings-rap2-generator-demo](https://github.com/kings1990/kings-rap2-generator-demo)
+[https://github.com/kings1990/rap2-generator-demo](https://github.com/kings1990/rap2-generator-demo)
 
 淘宝rap2插件测试地址(请勿乱删数据)
 ```
@@ -274,5 +233,5 @@ eclipse用户参考此文[https://blog.csdn.net/wangxiaotongfan/article/details/
 ```
 
 ## 7.如何贡献代码
-请查看[CONTRIBUTING.md](https://github.com/kings1990/kings-rap2-generator/blob/master/CONTRIBUTING.md)
+请查看[CONTRIBUTING.md](https://github.com/kings1990/rap2-generator/blob/master/CONTRIBUTING.md)
 我们非常欢迎你提交好的优质代码和建议
