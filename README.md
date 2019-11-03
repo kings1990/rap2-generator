@@ -169,13 +169,13 @@ body参数格式,支持4种格式:
     "responseResultDataType": "Number",
     "description": "[1-新建成功 0-新建失败]"
   },
-  "moduleConfigPath": "order/orderCommon.json"
+  "moduleConfigPath": "/订单/订单模块/orderCommon.json"
 }
 ```
 
 样例模板
-![模板](https://oscimg.oschina.net/oscnet/a23bbf6a86bc4e6bd271613917abdf1af61.jpg)
-建议:接口json命名最好以`仓库>模块>接口名.json`这么命名,理由是有利于查找和对应
+![模板](https://oscimg.oschina.net/oscnet/2230aad922d69fbf16835496f014517b734.jpg)
+建议:接口json结构最好以`仓库/模块/接口名.json`这么命名,跟rap2里面的结构保持一致,理由是有利于查找和定位
 
 ### 2.2 执行
 >a.使用json配置的形式执行(推荐)
