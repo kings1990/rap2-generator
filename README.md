@@ -174,7 +174,8 @@ body参数格式,支持4种格式:
 ```
 
 样例模板
-![模板](https://oscimg.oschina.net/oscnet/5a624ce01e9af592fb8736d9b0ae42ed4be.jpg)
+![模板](https://oscimg.oschina.net/oscnet/a23bbf6a86bc4e6bd271613917abdf1af61.jpg)
+建议:接口json命名最好以`仓库>模块>接口名.json`这么命名,理由是有利于查找和对应
 
 ### 2.2 执行
 >a.使用json配置的形式执行(推荐)
