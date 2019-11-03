@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.kings1990</groupId>
     <artifactId>rap2-generator</artifactId>
-    <version>1.0.3-RELEASE</version>
+    <version>1.0.4-RELEASE</version>
     <description>rap2 generator</description>
     <packaging>jar</packaging>
     
@@ -46,6 +46,12 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.9</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.26</version>
+        </dependency>
+        
         <!--注解部分-->
         <dependency>
             <groupId>org.springframework</groupId>

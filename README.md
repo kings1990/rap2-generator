@@ -5,7 +5,7 @@
 <dependency>
     <groupId>io.github.kings1990</groupId>
     <artifactId>rap2-generator</artifactId>
-    <version>1.0.3-RELEASE</version>
+    <version>1.0.4-RELEASE</version>
 </dependency>
 ```
 
@@ -45,37 +45,50 @@ public class KingsBankCard {
 
 ### 2.1 配置
 
-> **delosUrl**  
-`非必传`(v1.0.1)  
-`必传`(v1.0.2)  
+#### 2.1.0 配置介绍
+目前配置分为三部分
+
+* 全局配置
+* 模块配置
+* 接口配置
+
+`全局配置`:必须在resource目录下有一个globalConfig.json文件,包含了`delosUrl`、`doloresUrl`、`sid`、`sig`、`responseConfigPath`属性.
+因为sid、sig会过期,将这一分抽离出来可以更加方便执行程序即使过期也无碍,只需要改全局配置
+
+`模块配置`:包含了`repositoryId`、`packageName`属性,将同一个包下面的配置设置成一个模块配置,如用户模块和订单模块两者包名不一致,
+可以将两个模块分别设置一个公共的模块配置.这个配置是为了让接口配置更加专注于接口本身需要的一些属性,同时也使得模块和rap2仓库的概念
+更加清晰.
+
+`接口配置`:接口中所需要的一些必要属性
+
+#### 2.1.1 详细参数
+全局配置
+> **delosUrl**`必传`  
 rap2后端数据API服务器地址,如:```http://rap2api.taobao.org```
 
-> **doloresUrl**  
-`非必传`(v1.0.2)  
+> **doloresUrl**`必传`  
 rap2前端静态资源,如:```http://rap2.taobao.org```
-
-> **~~domainAndPortUrl~~**    
-rap2后端数据API服务器(不知道的去浏览器F12随便更新一个文档去取请求域名)  
-`必传`(v1.0.1)   
-`废除`(v1.0.2),使用delosUrl代替domainAndPortUrl
 
 > **sid**`必传`  
 rap2的cookie中的参数koa.sid
 
-
 > **sig**`必传`  
 rap2的cookie中的参数koa.sid.sig
 
-
-> **interfaceId**`必传`  
-rap2编辑api接口地址参数中的itf参数,如链接地址是```http:domain/organization/repository/editor?id=25&itf=285```,则interfaceId=285
-
-> **repositoryId**`非必传`(v1.0.2)  
+模块配置
+> **repositoryId**`非必传`  
 接口仓库id,值为接口链接中的id,即如果链接连接是```http://rap2.taobao.org/repository/editor?id=235211&itf=1349709```,
-则repositoryId=235211,加了此参数,执行程序会返回链接
+则repositoryId=235211,加了此参数,执行程序会返回链接,不传的话执行程序不会返回接口地址
+
+> **mod**`非必传`  
+rap2仓库下模块的模块id,点击rap2横向模块取mod参数值,不传的话执行程序不会返回接口地址
 
 > **packageName**`必传`  
 解析的java类包路径,如```com.kings.rap.demomodel```,需要注意得把所有的实体类放在该目录下,因为要支持递归查找
+
+接口配置
+> **interfaceId**`必传`  
+rap2编辑api接口地址参数中的itf参数,如链接地址是```http:domain/organization/repository/editor?id=25&itf=285```,则interfaceId=285
 
 > **requestJavaClassname**`必传`  
 请求参数对应的类名,如**KingsQueryVo**
@@ -115,35 +128,53 @@ body参数格式,支持4种格式:
 返回响应值的具体类型描述,如果responseResultType是Object类型此参数也可以不设置  
    
 > **responseConfigPath**`非必传`  
-自定义响应模板路径,第3节有详细配置
+自定义响应模板路径,第3节有详细配置  
 
+> **moduleConfigPath**`必传`  
+模块配置文件路径
 
 注意:`responseResultType`、`responseResultData属性可参考`[json参数帮助向导.md](https://github.com/kings1990/rap2-generator/blob/master/json参数帮助向导.md)
 
+#### 2.1.2 demo配置
 
-> demojson
-
-```
+全局配置globalConfig.json
+```  
 {
   "delosUrl": "http://rap2api.taobao.org",
   "doloresUrl": "http://rap2.taobao.org",
-  "sid": "eDj92yxUtwYaj-K52UtsoD2tDWCAK62Z",
-  "sig": "APDaceKunTDlPWdw0Solb6PiqeU",
-  "repositoryId":235211,
-  "interfaceId": 1349715,
-  "packageName": "io.github.kings1990.rap2.generator.test.model",
-  "requestJavaClassname": "KingsQueryVo",
-  "responseJavaClassname": "KingsHobby",
-  "bodyOption": "FORM_DATA",
-  "requestParamsType": "QUERY_PARAMS",
-  "responseResultType": "Array",
-  "responseResultData": {
-    "responseResultDataType": "Object",
-    "description": ""
-  },
+  "sid": "Mt-pC-FunYdi4eXjfvhCVopIENTNChZ1",
+  "sig": "We21o7E1Re5wyOQ7mTGUwoDFXJM",
   "responseConfigPath": "my-responseTemplate.json"
 }
 ```
+
+模块配置(orderCommon.json)
+```
+{
+  "repositoryId":235482,
+  "packageName": "io.github.kings1990.rap2.generator.test.order"
+}
+```
+
+接口配置
+```
+{
+  "interfaceId": 1352831,
+  "requestJavaClassname": "Order",
+  "responseJavaClassname": "",
+  "bodyOption": "FORM_DATA",
+  "requestParamsType": "BODY_PARAMS",
+  "responseResultType": "Number",
+  "responseResultData": {
+    "responseResultDataType": "Number",
+    "description": "[1-新建成功 0-新建失败]"
+  },
+  "moduleConfigPath": "order/orderCommon.json"
+}
+```
+
+样例模板
+![模板](https://oscimg.oschina.net/oscnet/5a624ce01e9af592fb8736d9b0ae42ed4be.jpg)
 
 ### 2.2 执行
 >a.使用json配置的形式执行(推荐)
@@ -205,7 +236,7 @@ public void testCustomResponseTemplate() throws Exception {
 
 ## 4.注意事项
 1. 针对类里面包含泛型的需要指明泛型,否则不支持解析
-2. 所有的解析类需要放在同一个目录下
+2. 不支持不同package下的类解析,解析的时候将实体类放到同一个指定的package下
 3. 配置文件和自定义响应模板放在resource下,且是标准json
 4. `sid`和`sig`可能会过期,如果程序中说需要重新登录,那就再登录一下并覆盖这2个参数
 

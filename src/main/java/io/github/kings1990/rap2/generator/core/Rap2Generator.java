@@ -8,6 +8,8 @@ import io.github.kings1990.rap2.generator.config.*;
 import io.github.kings1990.rap2.generator.model.Rap2Response;
 import okhttp3.*;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.*;
@@ -29,6 +31,7 @@ import java.util.stream.Collectors;
  * @date 2019.11.02
  */
 public class Rap2Generator {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Rap2Generator.class);
     
     private ParseConfig parseConfig;
 
@@ -76,7 +79,10 @@ public class Rap2Generator {
     
     public void generate() throws Exception {
         ParseConfig parseConfig = getParseConfig();
-        
+        if(parseConfig == null){
+            LOGGER.error("【error】配置文件解析异常");
+            return;
+        }
         //配置开始
         String sid = parseConfig.getSid();
         String sig = parseConfig.getSig();
@@ -96,9 +102,10 @@ public class Rap2Generator {
         String responseConfigPath = parseConfig.getResponseConfigPath();
 
         //1.0.2新配置
-        int repositoryId = parseConfig.getRepositoryId();
+        Integer repositoryId = parseConfig.getRepositoryId();
         String delosUrl = parseConfig.getDelosUrl();
         String doloresUrl = parseConfig.getDoloresUrl();
+        Integer mod = parseConfig.getMod();
         //配置结束
 
         final String cookie = "koa.sid=" + sid + ";koa.sid.sig=" + sig;
@@ -166,26 +173,26 @@ public class Rap2Generator {
         Rap2Response rap2Response = JSONObject.parseObject(result, Rap2Response.class);
         if(rap2Response.getIsOk() != null && !rap2Response.getIsOk()){
             if("need login".equals(rap2Response.getErrMsg())){
-                System.out.println("执行错误,cookie中sid和sig已过期，请重新登录拿取");    
+                LOGGER.error("【error】执行错误,cookie中sid和sig已过期，请重新登录拿取覆盖globalConfig.json中的sid和sig配置");    
             } else {
-                System.out.println("执行错误:"+rap2Response.getErrMsg());
+                LOGGER.error("【error】执行错误:"+rap2Response.getErrMsg());
             }
             return;
         }
         String resultInfo;
-        if(repositoryId != 0 && StringUtils.isNotBlank(doloresUrl)){
-            resultInfo = String.format("执行成功,接口地址:%s/repository/editor?id=%d&itf=%d",doloresUrl,repositoryId,interfaceId);
+        if(StringUtils.isNotBlank(doloresUrl) && repositoryId != null && mod != null){
+            resultInfo = String.format("【success】执行成功,接口地址:%s/repository/editor?id=%d&itf=%d&mod=%d",doloresUrl,repositoryId,interfaceId,mod);
         } else {
-            resultInfo = "执行成功!";
+            resultInfo = "【success】执行成功!";
         }
         
-        System.out.println(resultInfo);
+        LOGGER.info(resultInfo);
     }
 
     private JSONArray parse(JSONArray jsonArray,String  requestParamsType ,String scope, int interfaceId, String parentId, String packageName,String className,ResponseResultData responseResultData) throws Exception {
         //包目录
         String packageNameDir = packageName.replaceAll("\\.","/");
-        String javaDirPath = System.getProperty("user.dir")+"/src/main/java/"+ packageNameDir +"/";;
+        String javaDirPath = System.getProperty("user.dir")+"/src/main/java/"+ packageNameDir +"/";
         
         
         List<String> annotationList = new ArrayList<>();

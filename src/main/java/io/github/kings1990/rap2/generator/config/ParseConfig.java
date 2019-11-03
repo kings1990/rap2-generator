@@ -16,55 +16,22 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ParseConfig {
+public class ParseConfig extends ModuleConfig{
     /**
      * 域名端口
      */
     @Deprecated
     private String domainAndPortUrl;
-
-    /**
-     * rap2后端数据API服务器地址
-     */
-    private String delosUrl;
-
-    /**
-     * rap2前端静态资源
-     */
-    private String doloresUrl;
-
-    /**
-     * cookie sid
-     */
-    private String sid;
-    /**
-     * cookie sig
-     */
-    private String sig;
-
-    public ParseConfig(String domainAndPortUrl, String sid, String sig, int interfaceId, String packageName, String requestJavaClassname, String responseJavaClassname, Summary.BodyOption bodyOption, Summary.RequestParamsType requestParamsType, ResponseResultType responseResultType, ResponseResultData responseResultData) {
-        this.domainAndPortUrl = domainAndPortUrl;
-        this.sid = sid;
-        this.sig = sig;
-        this.interfaceId = interfaceId;
-        this.packageName = packageName;
-        this.requestJavaClassname = requestJavaClassname;
-        this.responseJavaClassname = responseJavaClassname;
-        this.bodyOption = bodyOption;
-        this.requestParamsType = requestParamsType;
-        this.responseResultType = responseResultType;
-        this.responseResultData = responseResultData;
-    }
-
+    
     /**
      * 接口id
      */
-    private int interfaceId;
+    private Integer interfaceId;
 
     /**
      * 仓库id
      */
-    private int repositoryId;
+    private Integer repositoryId;
 
     /**
      * 解析java类包名
@@ -95,9 +62,9 @@ public class ParseConfig {
      */
     private ResponseResultData responseResultData;
     /**
-     * 响应配置集合
+     * 模块解析模板路径
      */
-    private String responseConfigPath = "default";
+    private String moduleConfigPath;
     
 }
 
