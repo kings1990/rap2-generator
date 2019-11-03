@@ -55,7 +55,7 @@ public class KingsBankCard {
 `全局配置`:必须在resource目录下有一个globalConfig.json文件,包含了`delosUrl`、`doloresUrl`、`sid`、`sig`、`responseConfigPath`属性.
 因为sid、sig会过期,将这一分抽离出来可以更加方便执行程序即使过期也无碍,只需要改全局配置
 
-`模块配置`:包含了`repositoryId`、`packageName`属性,将同一个包下面的配置设置成一个模块配置,如用户模块和订单模块两者包名不一致,
+`模块配置`:包含了`repositoryId`、`packageName`、`mod`属性,将同一个包下面的配置设置成一个模块配置,如用户模块和订单模块两者包名不一致,
 可以将两个模块分别设置一个公共的模块配置.这个配置是为了让接口配置更加专注于接口本身需要的一些属性,同时也使得模块和rap2仓库的概念
 更加清晰.
 
