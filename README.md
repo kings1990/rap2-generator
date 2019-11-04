@@ -1,4 +1,4 @@
-<p align="center">为简化而生</p>
+<h1 align="center">为简化而生</h1>
 
 [![Build Status](https://travis-ci.com/kings1990/rap2-generator.svg?branch=master)](https://travis-ci.com/kings1990/rap2-generator)
 ![](https://img.shields.io/maven-central/v/io.github.kings1990/rap2-generator.svg?style=flat-square)
