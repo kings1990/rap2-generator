@@ -1,9 +1,9 @@
 <h1 align="center">为自动化而生</h1>
 
-[![Build Status](https://travis-ci.com/kings1990/rap2-generator.svg?branch=master)](https://travis-ci.com/kings1990/rap2-generator)
-[![maven](https://img.shields.io/maven-central/v/io.github.kings1990/rap2-generator.svg?style=flat-square)](https://search.maven.org/search?q=g:io.github.kings1990%20AND%20a:rap2-generator)
-[![java](https://img.shields.io/badge/language-java-orange.svg)](https://github.com/kings1990/rap2-generator)
-[![apache](https://img.shields.io/badge/license-Apache2-pink.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Build Status](https://travis-ci.com/kings1990/rap2-generator.svg?branch=master)](https://travis-ci.com/kings1990/rap2-generator?_blank)
+[![maven](https://img.shields.io/maven-central/v/io.github.kings1990/rap2-generator.svg?style=flat-square)](https://search.maven.org/search?q=g:io.github.kings1990%20AND%20a:rap2-generator?_blank)
+[![java](https://img.shields.io/badge/language-java-orange.svg)](https://github.com/kings1990/rap2-generator?_blank)
+[![apache](https://img.shields.io/badge/license-Apache2-pink.svg)](https://www.apache.org/licenses/LICENSE-2.0?_blank)
 
 ## 最新版本
 ```
