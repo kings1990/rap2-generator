@@ -1,4 +1,9 @@
-# rap2-generator
+<p align="center">为简化而生</p>
+
+[![Build Status](https://travis-ci.com/kings1990/rap2-generator.svg?branch=master)](https://travis-ci.com/kings1990/rap2-generator)
+![](https://img.shields.io/maven-central/v/io.github.kings1990/rap2-generator.svg?style=flat-square)
+![](https://img.shields.io/badge/language-java-orange.svg)
+![](https://img.shields.io/badge/license-Apache2-pink.svg)
 
 ## 最新版本
 ```
