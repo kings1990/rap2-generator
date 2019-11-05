@@ -1,9 +1,20 @@
+
 <h1 align="center">为自动化而生</h1>
 
-[![Build Status](https://travis-ci.com/kings1990/rap2-generator.svg?branch=master)](https://travis-ci.com/kings1990/rap2-generator)
-[![maven](https://img.shields.io/maven-central/v/io.github.kings1990/rap2-generator.svg?style=flat-square)](https://search.maven.org/search?q=g:io.github.kings1990%20AND%20a:rap2-generator)
-[![java](https://img.shields.io/badge/language-java-orange.svg)](https://github.com/kings1990/rap2-generator)
-[![apache](https://img.shields.io/badge/license-Apache2-pink.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+
+<div align="center"><img align="center" src="https://oscimg.oschina.net/oscnet/a964e875efa442570fe3a7cdfded0027183.jpg"/></div>
+
+
+<div align="center">
+	<a href="https://travis-ci.com/kings1990/rap2-generator"><img src="https://travis-ci.com/kings1990/rap2-generator.svg?branch=master"></a>
+	
+	<a href="https://search.maven.org/search?q=g:io.github.kings1990%20AND%20a:rap2-generator"><img src="https://img.shields.io/maven-central/v/io.github.kings1990/rap2-generator.svg?style=flat-square"/></a>
+	
+	<a href="https://github.com/kings1990/rap2-generator"><img src="https://img.shields.io/badge/language-java-orange.svg"/></a>
+	
+	<a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache2-pink.svg"/></a>
+		
+</div>
 
 ## 最新版本
 ```
