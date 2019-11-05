@@ -4,7 +4,6 @@
 
 <div align="center"><img align="center" src="https://oscimg.oschina.net/oscnet/a964e875efa442570fe3a7cdfded0027183.jpg"/></div>
 
-
 <div>
 	<span align="center">
 		<a href="https://travis-ci.com/kings1990/rap2-generator">
