@@ -5,22 +5,26 @@
 <div align="center"><img align="center" src="https://oscimg.oschina.net/oscnet/a964e875efa442570fe3a7cdfded0027183.jpg"/></div>
 
 <div align="center">
+	<span>
 		<a href="https://travis-ci.com/kings1990/rap2-generator">
 			<img src="https://travis-ci.com/kings1990/rap2-generator.svg?branch=master">
 		</a>
-
+	</span>
+	<span >
 		<a href="https://search.maven.org/search?q=g:io.github.kings1990%20AND%20a:rap2-generator">
 			<img src="https://img.shields.io/maven-central/v/io.github.kings1990/rap2-generator.svg?style=flat-square"/>
 		</a>
-
+	</span>	
+	<span >
 		<a href="https://github.com/kings1990/rap2-generator">
 			<img src="https://img.shields.io/badge/language-java-orange.svg"/>
 		</a>
-
+	</span>	
+	<span>
 		<a href="https://www.apache.org/licenses/LICENSE-2.0">
 			<img src="https://img.shields.io/badge/license-Apache2-pink.svg"/>
 		</a>	
-
+	</span>
 </div>
 
 ## 最新版本
