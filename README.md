@@ -280,7 +280,7 @@ eclipse用户参考此文[https://blog.csdn.net/wangxiaotongfan/article/details/
 ## 5.演示
 基于[淘宝rap2](http://rap2.taobao.org/)的自动化导入.
 
-![](https://oscimg.oschina.net/oscnet/99c83368fe39dc4733aa2e8e81676ec3ef9.jpg)
+[演示](https://oscimg.oschina.net/oscnet/99c83368fe39dc4733aa2e8e81676ec3ef9.jpg)
 
 ## 6.demo小程序
 [https://github.com/kings1990/rap2-generator-demo](https://github.com/kings1990/rap2-generator-demo)
