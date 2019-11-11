@@ -116,9 +116,11 @@ public class Rap2Generator {
         JSONArray all = new JSONArray();
         //处理request
         String parentId = "-1";
-        JSONArray resultRequest = parse(jsonArray,requestParamsType.name(), REQUEST, interfaceId, parentId, packageName,requestJavaClassname,null);
-        all.addAll(resultRequest);
-
+        //空入参
+        if(StringUtils.isNotBlank(requestJavaClassname)){
+            JSONArray resultRequest = parse(jsonArray,requestParamsType.name(), REQUEST, interfaceId, parentId, packageName,requestJavaClassname,null);
+            all.addAll(resultRequest);
+        }
 
         String responseType = responseResultData.getResponseResultDataType().getExp();
         String dealResponseType = dealType(responseType);
