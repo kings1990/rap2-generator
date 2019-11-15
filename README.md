@@ -72,8 +72,6 @@ public class KingsBankCard {
 
 [常见问题](https://github.com/kings1990/rap2-generator/wiki/常见问题)
 
-[demo程序](https://github.com/kings1990/rap2-generator/wiki/demo小程序)
-
 [更新日志](https://github.com/kings1990/rap2-generator/wiki/更新日志)
 
 ## Demo
