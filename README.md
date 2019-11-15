@@ -62,7 +62,7 @@ public class KingsBankCard {
 
 [演示](https://oscimg.oschina.net/oscnet/99c83368fe39dc4733aa2e8e81676ec3ef9.jpg)
 
-## Wiki
+## Links
 
 [Home](https://github.com/kings1990/rap2-generator/wiki)
 
