@@ -44,7 +44,7 @@ public class Rap2Generator {
     }
 
     private static final String TARGET_URL = "/properties/update?itf=%d";
-    private static final String ANNOTATION_EXP = "^(\\s+)\\*\\s+(.*)";
+    private static final String ANNOTATION_EXP = "(\\s+)\\*(\\s+|\\s?)(.*)|(\\s+)/\\**(\\s+|\\s?)(.*)\\*/|(\\s+)(//\\s+|//\\s?)(.*)";
     private static final String FIELD_EXP = "\\s+private\\s+(.*)\\s+(\\w+);$";
     private static final String TYPE_NUMBER_EXP = "Integer|int|Short|short|Byte|byte|Long|long|BigDecimal|Float|float|Double|double|Character|char|BigInteger";
     private static final String TYPE_STRING_EXP = "String|Date|LocalDate|LocalDateTime";
@@ -223,7 +223,13 @@ public class Rap2Generator {
                 if (beginFlag) {
                     //注释部分
                     if (matcherAnnotation.matches()) {
-                        annotationList.add(matcherAnnotation.group(2));
+                        String anno;
+                        int idx = 3;
+                        do {
+                            anno = matcherAnnotation.group(idx);
+                            idx += 3;
+                        } while (idx < 12 && anno == null);
+                        annotationList.add(anno);
                     }
                     //字段部分
                     if (matcherField.matches()) {
