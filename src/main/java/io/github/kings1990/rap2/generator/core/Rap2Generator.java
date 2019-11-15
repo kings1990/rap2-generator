@@ -46,7 +46,7 @@ public class Rap2Generator {
     private static final String TARGET_URL = "/properties/update?itf=%d";
     private static final String ANNOTATION_EXP = "^(\\s+)\\*\\s+(.*)";
     private static final String FIELD_EXP = "\\s+private\\s+(.*)\\s+(\\w+);$";
-    private static final String TYPE_NUMBER_EXP = "Integer|int|Short|short|Byte|byte|Long|long|BigDecimal|Float|float|Double|double";
+    private static final String TYPE_NUMBER_EXP = "Integer|int|Short|short|Byte|byte|Long|long|BigDecimal|Float|float|Double|double|Character|char|BigInteger";
     private static final String TYPE_STRING_EXP = "String|Date|LocalDate|LocalDateTime";
     private static final String TYPE_BOOLEAN_EXP = "Boolean|boolean";
     private static final String TYPE_ARRAY_EXP = "List(.*)|(.*)\\[]";
@@ -159,9 +159,11 @@ public class Rap2Generator {
             IDX++;
         }
         parentId = "memory-"+responseConfigList.size();
-        
-        JSONArray resultResponse = parse(jsonArray, requestParamsType.name(), RESPONSE, interfaceId, parentId, packageName,responseJavaClassname,responseResultData);
-        all.addAll(resultResponse);
+
+        if(StringUtils.isNotBlank(responseJavaClassname)) {
+            JSONArray resultResponse = parse(jsonArray, requestParamsType.name(), RESPONSE, interfaceId, parentId, packageName, responseJavaClassname, responseResultData);
+            all.addAll(resultResponse);
+        }
 
         JSONObject jsonObject = new JSONObject();
         Summary summary = new Summary(bodyOption,requestParamsType);
