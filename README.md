@@ -76,6 +76,18 @@ public class KingsBankCard {
 
 [更新日志](https://github.com/kings1990/rap2-generator/wiki/更新日志)
 
+## Demo
+仓库地址:[https://github.com/kings1990/rap2-generator-demo](https://github.com/kings1990/rap2-generator-demo)
+
+淘宝rap2插件测试地址(请勿乱删数据)
+
+```
+地址:http://rap2.taobao.org/
+仓库:rap2-generator-test
+账号:rap2-generator@qq.com
+密码:123456
+```
+
 ## 如何贡献代码
 请查看[CONTRIBUTING.md](https://github.com/kings1990/rap2-generator/blob/master/CONTRIBUTING.md)
 我们非常欢迎你提交好的优质代码和建议
