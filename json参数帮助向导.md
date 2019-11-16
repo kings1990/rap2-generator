@@ -124,7 +124,7 @@
 }
 ```
 
-# 返回分页
+# 返回属性带泛型的实体类
 ```
 {
   "响应": {
@@ -147,7 +147,7 @@
     }
   },
   "json类型参考": {
-    "responseJavaClassname": "分页类指定data属性的具体泛型",
+    "responseJavaClassname": "Page(分页类指定data属性的具体泛型,如List<Book> list)",
     "responseResultType": "Object",
     "responseResultData": {
       "responseResultDataType": "Object",
