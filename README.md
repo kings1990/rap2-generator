@@ -26,7 +26,7 @@
 	</span>
 </div>
 
-## 最新版本
+## Latest version 
 ```
 <dependency>
     <groupId>io.github.kings1990</groupId>
@@ -35,10 +35,9 @@
 </dependency>
 ```
 
-## 背景
+## What is rap2-generator
 前后端分离利用rap2的时候需要将java实体类的注释拷贝到rap2上,字段一多十分麻烦.本工具实现自动化将实体类解析导入rap2
 
-## 功能
 假如你有一个实体类,如下
 
 ```
@@ -56,9 +55,6 @@ public class KingsBankCard {
 ```
 你需要将他写入rap2的响应内容参数,那么你就需要手动将*cardNo*和*password*字段的注释即rap2响应内容的简介拷贝进去,
 本工具将解决这一部分的难题,实现简单配置自动导入
-
-## 演示
-基于[淘宝rap2](http://rap2.taobao.org/)的自动化导入.[演示->](https://oscimg.oschina.net/oscnet/99c83368fe39dc4733aa2e8e81676ec3ef9.jpg)
 
 ## Links
 
@@ -92,6 +88,9 @@ public class KingsBankCard {
 账号:rap2-generator@qq.com
 密码:123456
 ```
+
+## Showcase
+基于[淘宝rap2](http://rap2.taobao.org/)的自动化导入.[演示->](https://oscimg.oschina.net/oscnet/99c83368fe39dc4733aa2e8e81676ec3ef9.jpg)
 
 ## Contribut
 请查看[CONTRIBUTING.md](https://github.com/kings1990/rap2-generator/blob/master/CONTRIBUTING.md)
