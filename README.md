@@ -68,6 +68,8 @@ public class KingsBankCard {
 
 * [自定义响应模板](https://github.com/kings1990/rap2-generator/wiki/自定义响应模板)
 
+* [返回值配置示例](https://github.com/kings1990/rap2-generator/wiki/返回值配置示例)
+
 * [常见问题](https://github.com/kings1990/rap2-generator/wiki/常见问题)
 
 * [更新日志](https://github.com/kings1990/rap2-generator/wiki/更新日志)
