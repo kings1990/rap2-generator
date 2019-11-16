@@ -26,15 +26,6 @@
 	</span>
 </div>
 
-## Latest version 
-```
-<dependency>
-    <groupId>io.github.kings1990</groupId>
-    <artifactId>rap2-generator</artifactId>
-    <version>1.0.5-RELEASE</version>
-</dependency>
-```
-
 ## What is rap2-generator
 前后端分离利用rap2的时候需要将java实体类的注释拷贝到rap2上,字段一多十分麻烦.本工具实现自动化将实体类解析导入rap2
 
@@ -55,6 +46,16 @@ public class KingsBankCard {
 ```
 你需要将他写入rap2的响应内容参数,那么你就需要手动将*cardNo*和*password*字段的注释即rap2响应内容的简介拷贝进去,
 本工具将解决这一部分的难题,实现简单配置自动导入
+
+
+## Latest version 
+```
+<dependency>
+    <groupId>io.github.kings1990</groupId>
+    <artifactId>rap2-generator</artifactId>
+    <version>1.0.5-RELEASE</version>
+</dependency>
+```
 
 ## Links
 
