@@ -58,21 +58,26 @@ public class KingsBankCard {
 本工具将解决这一部分的难题,实现简单配置自动导入
 
 ## 演示
-基于[淘宝rap2](http://rap2.taobao.org/)的自动化导入.
-
-[演示](https://oscimg.oschina.net/oscnet/99c83368fe39dc4733aa2e8e81676ec3ef9.jpg)
+基于[淘宝rap2](http://rap2.taobao.org/)的自动化导入.[演示->](https://oscimg.oschina.net/oscnet/99c83368fe39dc4733aa2e8e81676ec3ef9.jpg)
 
 ## Links
 
-[Home](https://github.com/kings1990/rap2-generator/wiki)
+* [Home](https://github.com/kings1990/rap2-generator/wiki)
 
-[使用](https://github.com/kings1990/rap2-generator/wiki/使用)
+* [使用](https://github.com/kings1990/rap2-generator/wiki/使用)
 
-[自定义响应模板](https://github.com/kings1990/rap2-generator/wiki/自定义响应模板)
+* [自定义响应模板](https://github.com/kings1990/rap2-generator/wiki/自定义响应模板)
 
-[常见问题](https://github.com/kings1990/rap2-generator/wiki/常见问题)
+* [常见问题](https://github.com/kings1990/rap2-generator/wiki/常见问题)
 
-[更新日志](https://github.com/kings1990/rap2-generator/wiki/更新日志)
+* [更新日志](https://github.com/kings1990/rap2-generator/wiki/更新日志)
+
+## Features
+* 无限级嵌套解析
+* 泛型解析
+* 自定义响应模板定制
+* 兼容各种类型的属性注释
+* 各种java类型解析
 
 ## Demo
 仓库地址:[https://github.com/kings1990/rap2-generator-demo](https://github.com/kings1990/rap2-generator-demo)
@@ -86,6 +91,6 @@ public class KingsBankCard {
 密码:123456
 ```
 
-## 如何贡献代码
+## Contribut
 请查看[CONTRIBUTING.md](https://github.com/kings1990/rap2-generator/blob/master/CONTRIBUTING.md)
 我们非常欢迎你提交好的优质代码和建议
