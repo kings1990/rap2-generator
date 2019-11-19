@@ -84,6 +84,8 @@
                     <execution>
                         <id>sign-artifacts</id>
                         <phase>verify</phase>
+                        <!--本地开发时打开-->
+                        <!--<phase>deploy</phase>-->
                         <goals>
                             <goal>sign</goal>
                         </goals>
