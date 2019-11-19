@@ -83,7 +83,7 @@
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
-                        <phase>deploy</phase>
+                        <phase>verify</phase>
                         <goals>
                             <goal>sign</goal>
                         </goals>
@@ -146,8 +146,37 @@
             <id>oss</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
+        <!--github package-->
+<!--        <repository>-->
+<!--            <id>github</id>-->
+<!--            <name>GitHub OWNER Apache Maven Packages</name>-->
+<!--            <url>https://maven.pkg.github.com/kings1990/rap2-generator</url>-->
+<!--        </repository>-->
     </distributionManagement>
 
+    <profiles>
+        <profile>
+            <id>github</id>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>github</id>
+                    <name>GitHub OWNER Apache Maven Packages</name>
+                    <url>https://maven.pkg.github.com/kings1990/rap2-generator</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+    
     <!--项目的协议-->
     <licenses>
         <license>
