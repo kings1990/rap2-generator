@@ -152,10 +152,8 @@ public class Rap2Generator {
         parentId = "memory-" + responseConfigList.size();
         beginExtendParentId = parentId;
 
-        if (StringUtils.isNotBlank(responseJavaClassname)) {
-            JSONArray resultResponse = parse(jsonArray, requestParamsType.name(), RESPONSE, interfaceId, parentId, packageName, responseJavaClassname, responseResultData);
-            all.addAll(resultResponse);
-        }
+        JSONArray resultResponse = parse(jsonArray, requestParamsType.name(), RESPONSE, interfaceId, parentId, packageName, responseJavaClassname, responseResultData);
+        all.addAll(resultResponse);
 
         JSONObject jsonObject = new JSONObject();
         Summary summary = new Summary(bodyOption, requestParamsType);
