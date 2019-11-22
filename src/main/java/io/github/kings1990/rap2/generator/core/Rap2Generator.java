@@ -32,17 +32,6 @@ import java.util.stream.Collectors;
  */
 public class Rap2Generator {
     private static final Logger LOGGER = LoggerFactory.getLogger(Rap2Generator.class);
-    
-    private ParseConfig parseConfig;
-
-    private ParseConfig getParseConfig() {
-        return parseConfig;
-    }
-
-    public void setParseConfig(ParseConfig parseConfig) {
-        this.parseConfig = parseConfig;
-    }
-
     private static final String TARGET_URL = "/properties/update?itf=%d";
     private static final String ANNOTATION_EXP = "(\\s*|\\t*)\\*(\\s*|\\t*)((?!\\s+|\\s?/).*)|(\\s*|\\t*)/\\**(\\s*|\\t*)(.*)\\*/|(\\s*|\\t*)(//\\s*|//\\t*)(.*)";
     private static final String FIELD_EXP = "(\\s*|\\t*)(private|protected|public)\\s+(.*)\\s+(\\w+);$";
@@ -51,12 +40,12 @@ public class Rap2Generator {
     private static final String TYPE_BOOLEAN_EXP = "Boolean|boolean";
     private static final String TYPE_ARRAY_EXP = "List(.*)|(.*)\\[]";
     private static final String BEGIN_PARSE_CLASS_EXP = "(\\s*|\\t*)public(\\s+abstract)?\\s+class\\s+(\\w+(<\\w+>)?)(\\s+extends\\s+(\\w+)(<\\w+>)?)?(\\s+implements\\s+Serializable)?\\s*\\{";
-    
     //KingsBankCard[]
     private static final String PARSE_ARRAY_TYPE_EXP = "(.*)\\[]";
     //List<KingsHobby>
     private static final String PARSE_LIST_TYPE_EXP = "(\\w+)<(.*)>";
-    
+    private static final String RESPONSE = "response";
+    private static final String REQUEST = "request";
     private static Pattern PATTERN_ANNOTATION = Pattern.compile(ANNOTATION_EXP);
     private static Pattern PATTERN_FIELD = Pattern.compile(FIELD_EXP);
     private static Pattern PATTERN_TYPE_NUMBER = Pattern.compile(TYPE_NUMBER_EXP);
@@ -66,18 +55,22 @@ public class Rap2Generator {
     private static Pattern PATTERN_PARSE_ARRAY_TYPE = Pattern.compile(PARSE_ARRAY_TYPE_EXP);
     private static Pattern PATTERN_PARSE_LIST_TYPE = Pattern.compile(PARSE_LIST_TYPE_EXP);
     private static Pattern PATTERN_BEGIN_PARSE_CLASS = Pattern.compile(BEGIN_PARSE_CLASS_EXP);
-    
-    private static final String RESPONSE = "response";
-    private static final String REQUEST = "request";
-    
     //运算中可变
     private static int IDX = 1;
+    private ParseConfig parseConfig;
     private String beginExtendParentId;
-    
-    
+
+    private ParseConfig getParseConfig() {
+        return parseConfig;
+    }
+
+    public void setParseConfig(ParseConfig parseConfig) {
+        this.parseConfig = parseConfig;
+    }
+
     public void generate() throws Exception {
         ParseConfig parseConfig = getParseConfig();
-        if(parseConfig == null){
+        if (parseConfig == null) {
             LOGGER.error("【error】配置文件解析异常");
             return;
         }
@@ -85,13 +78,13 @@ public class Rap2Generator {
         String sid = parseConfig.getSid();
         String sig = parseConfig.getSig();
         int interfaceId = parseConfig.getInterfaceId();
-        
+
         String packageName = parseConfig.getPackageName();
-        
-        
+
+
         final String requestJavaClassname = parseConfig.getRequestJavaClassname();
         final String responseJavaClassname = parseConfig.getResponseJavaClassname();
-        
+
         Summary.BodyOption bodyOption = parseConfig.getBodyOption();
         Summary.RequestParamsType requestParamsType = parseConfig.getRequestParamsType();
         ResponseResultType responseResultType = parseConfig.getResponseResultType();
@@ -107,16 +100,16 @@ public class Rap2Generator {
         //配置结束
 
         final String cookie = "koa.sid=" + sid + ";koa.sid.sig=" + sig;
-        final String updateUrl = String.format(delosUrl+TARGET_URL,interfaceId);
-        
+        final String updateUrl = String.format(delosUrl + TARGET_URL, interfaceId);
+
         JSONArray jsonArray = new JSONArray();
-        
+
         JSONArray all = new JSONArray();
         //处理request
         String parentId = "-1";
         //空入参
-        if(StringUtils.isNotBlank(requestJavaClassname)){
-            JSONArray resultRequest = parse(jsonArray,requestParamsType.name(), REQUEST, interfaceId, parentId, packageName,requestJavaClassname,null);
+        if (StringUtils.isNotBlank(requestJavaClassname)) {
+            JSONArray resultRequest = parse(jsonArray, requestParamsType.name(), REQUEST, interfaceId, parentId, packageName, requestJavaClassname, null);
             all.addAll(resultRequest);
         }
 
@@ -127,23 +120,23 @@ public class Rap2Generator {
         IDX = 1;
 
         //自定义response json
-        if("default".equals(responseConfigPath)){
+        if ("default".equals(responseConfigPath)) {
             responseConfigPath = "default-responseTemplate.json";
         }
 
-        InputStream inputStream = Rap2Generator.class.getResourceAsStream("/"+responseConfigPath);
+        InputStream inputStream = Rap2Generator.class.getResourceAsStream("/" + responseConfigPath);
         String jsonString = new BufferedReader(new InputStreamReader(inputStream)).lines().parallel().collect(Collectors.joining(System.lineSeparator()));
-        List<ResponseTemplateConfig> responseConfigList = JSONArray.parseArray(jsonString,ResponseTemplateConfig.class);
+        List<ResponseTemplateConfig> responseConfigList = JSONArray.parseArray(jsonString, ResponseTemplateConfig.class);
         long resultCount = responseConfigList.stream().filter(ResponseTemplateConfig::isResultFlag).count();
-        if(resultCount != 1){
+        if (resultCount != 1) {
             throw new Exception("自定义response有且必须包含1个resultFlag=true的配置");
         }
 
         for (ResponseTemplateConfig responseConfig : responseConfigList) {
-            if(responseConfig.isResultFlag()){
-                if(!"Object".equals(dealResponseType)){
+            if (responseConfig.isResultFlag()) {
+                if (!"Object".equals(dealResponseType)) {
                     //返回 结果(类型:注释) 如 结果(String:customerCode集合)
-                    JSONObject jsonObjectResult = dealCommonParam(responseConfig.getProperty(), responseConfig.getDescription()+"("+dealResponseType+":"+responseResultData.getDescription()+")", responseResultType.getExp(), "-1", interfaceId, "response");
+                    JSONObject jsonObjectResult = dealCommonParam(responseConfig.getProperty(), responseConfig.getDescription() + "(" + dealResponseType + ":" + responseResultData.getDescription() + ")", responseResultType.getExp(), "-1", interfaceId, "response");
                     jsonArray.add(jsonObjectResult);
                 } else {
                     //解析内部对象
@@ -156,56 +149,56 @@ public class Rap2Generator {
             }
             IDX++;
         }
-        parentId = "memory-"+responseConfigList.size();
+        parentId = "memory-" + responseConfigList.size();
         beginExtendParentId = parentId;
-        
-        if(StringUtils.isNotBlank(responseJavaClassname)) {
+
+        if (StringUtils.isNotBlank(responseJavaClassname)) {
             JSONArray resultResponse = parse(jsonArray, requestParamsType.name(), RESPONSE, interfaceId, parentId, packageName, responseJavaClassname, responseResultData);
             all.addAll(resultResponse);
         }
 
         JSONObject jsonObject = new JSONObject();
-        Summary summary = new Summary(bodyOption,requestParamsType);
-        jsonObject.put("properties",new JSONArray());
-        jsonObject.put("summary",JSONObject.toJSON(summary));
+        Summary summary = new Summary(bodyOption, requestParamsType);
+        jsonObject.put("properties", new JSONArray());
+        jsonObject.put("summary", JSONObject.toJSON(summary));
         //清空历史
-        HttpUtil.post(updateUrl,jsonObject.toString(),cookie);
-        jsonObject.put("properties",all);
-        String result = HttpUtil.post(updateUrl,jsonObject.toString(),cookie);
-        
+        HttpUtil.post(updateUrl, jsonObject.toString(), cookie);
+        jsonObject.put("properties", all);
+        String result = HttpUtil.post(updateUrl, jsonObject.toString(), cookie);
+
         Rap2Response rap2Response = JSONObject.parseObject(result, Rap2Response.class);
-        if(rap2Response.getIsOk() != null && !rap2Response.getIsOk()){
-            if("need login".equals(rap2Response.getErrMsg())){
-                LOGGER.error("【error】执行错误,cookie中sid和sig已过期，请重新登录拿取覆盖globalConfig.json中的sid和sig配置");    
+        if (rap2Response.getIsOk() != null && !rap2Response.getIsOk()) {
+            if ("need login".equals(rap2Response.getErrMsg())) {
+                LOGGER.error("【error】执行错误,cookie中sid和sig已过期，请重新登录拿取覆盖globalConfig.json中的sid和sig配置");
             } else {
-                LOGGER.error("【error】执行错误:"+rap2Response.getErrMsg());
+                LOGGER.error("【error】执行错误:" + rap2Response.getErrMsg());
             }
             return;
         }
         String resultInfo;
-        if(StringUtils.isNotBlank(doloresUrl) && repositoryId != null && mod != null){
-            resultInfo = String.format("【success】执行成功,接口地址:%s/repository/editor?id=%d&itf=%d&mod=%d",doloresUrl,repositoryId,interfaceId,mod);
+        if (StringUtils.isNotBlank(doloresUrl) && repositoryId != null && mod != null) {
+            resultInfo = String.format("【success】执行成功,接口地址:%s/repository/editor?id=%d&itf=%d&mod=%d", doloresUrl, repositoryId, interfaceId, mod);
         } else {
             resultInfo = "【success】执行成功!";
         }
-        
+
         LOGGER.info(resultInfo);
     }
 
-    private JSONArray parse(JSONArray jsonArray,String  requestParamsType ,String scope, int interfaceId, String parentId, String packageName,String className,ResponseResultData responseResultData) throws Exception {
+    private JSONArray parse(JSONArray jsonArray, String requestParamsType, String scope, int interfaceId, String parentId, String packageName, String className, ResponseResultData responseResultData) throws Exception {
         //包目录
-        String packageNameDir = packageName.replaceAll("\\.","/");
-        String javaDirPath = System.getProperty("user.dir")+"/src/main/java/"+ packageNameDir +"/";
-        
-        
+        String packageNameDir = packageName.replaceAll("\\.", "/");
+        String javaDirPath = System.getProperty("user.dir") + "/src/main/java/" + packageNameDir + "/";
+
+
         List<String> annotationList = new ArrayList<>();
         List<String> fieldList = new ArrayList<>();
         List<String> fieldTypeList = new ArrayList<>();
         //时间格式
-        Map<String,String> dayFormatMap = new HashMap<>();
+        Map<String, String> dayFormatMap = new HashMap<>();
         String extendsClass = null;
         //response为对象进行解析
-        if(responseResultData == null ||  "Object".equals(dealType(responseResultData.getResponseResultDataType().getExp()))) {
+        if (responseResultData == null || "Object".equals(dealType(responseResultData.getResponseResultDataType().getExp()))) {
             String path = javaDirPath + className + ".java";
             File tempFile = new File(path);
             FileReader fileReader = new FileReader(tempFile);
@@ -213,8 +206,11 @@ public class Rap2Generator {
             String s;
             boolean beginFlag = false;
             
+            //检测字段
             int checkProperty = 1;
-            
+            //检测注释
+            int checkAnno = 1;
+
             while ((s = bufferedReader.readLine()) != null) {
                 Matcher matcherField = PATTERN_FIELD.matcher(s);
                 Matcher matcherAnnotation = PATTERN_ANNOTATION.matcher(s);
@@ -225,12 +221,11 @@ public class Rap2Generator {
                 }
                 if (beginFlag) {
                     //继承类
-                    
-                    if(matcherBeginParseClass.matches()){
+
+                    if (matcherBeginParseClass.matches()) {
                         extendsClass = matcherBeginParseClass.group(6);
                     }
-                    
-                    
+
                     //注释部分
                     if (matcherAnnotation.matches()) {
                         String anno;
@@ -240,7 +235,14 @@ public class Rap2Generator {
                             idx += 3;
                         } while (idx < 12 && anno == null);
                         annotationList.add(anno);
-                        checkProperty --;
+                        //注释检测
+                        checkProperty--;
+                        if (checkProperty < 0) {
+                            //出现一个字段多个属性,累加属性idx
+                            checkAnno++;
+                            //出现多个注释需要将起始点-1即从0开始 下一个字段开始匹配到变为1 开始新一轮
+                            checkProperty = 0;
+                        }
                     }
                     //字段部分
                     if (matcherField.matches()) {
@@ -248,31 +250,42 @@ public class Rap2Generator {
                         String fieldName = matcherField.group(4);
                         fieldTypeList.add(filedType);
                         fieldList.add(fieldName);
-                        if(judgeDayType(filedType)){
-                            String dayPattern = getDayPattern(packageName+"."+className, fieldName);
-                            dayFormatMap.put(fieldName,dayPattern);
+                        if (judgeDayType(filedType)) {
+                            String dayPattern = getDayPattern(packageName + "." + className, fieldName);
+                            dayFormatMap.put(fieldName, dayPattern);
                         }
-                        checkProperty ++;
-                        if(checkProperty > 1){
+                        //字段检测
+                        checkProperty++;
+                        if (checkProperty > 1) {
+                            //没加注释默认填充""
                             annotationList.add("");
-                            LOGGER.error("【warn】类名"+className+"   字段["+fieldName+"]没有注释");
+                            LOGGER.error("【warn】类名" + className + "   字段[" + fieldName + "]没有注释");
+                            //重置记数
                             checkProperty = 1;
+                        }
+                        if (checkAnno > 1) {
+                            String property = fieldList.get(fieldList.size() - 1);
+                            System.out.println("【warn】字段" + property + "有多重注释");
+
+                            //去掉重复的注释并重置次数
+                            annotationList.subList(annotationList.size() - checkAnno,annotationList.size()-1).clear();
+                            checkAnno = 1;
                         }
                     }
                 }
             }
-            
+
             for (int i = 0; i < fieldList.size(); i++) {
                 String fieldString = fieldList.get(i);
                 String annotationString = null;
                 annotationString = annotationList.get(i);
-                
+
                 String type = fieldTypeList.get(i);
-                if(judgeDayType(type)){
+                if (judgeDayType(type)) {
                     String dayPattern = dayFormatMap.get(fieldString);
-                    annotationString = annotationString + String.format("[格式:%s]",dayPattern);
+                    annotationString = annotationString + String.format("[格式:%s]", dayPattern);
                 }
-                
+
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("name", fieldString);
                 jsonObject.put("description", annotationString);
@@ -316,10 +329,10 @@ public class Rap2Generator {
                 }
             }
         }
-        if(extendsClass != null){
+        if (extendsClass != null) {
             jsonArray = parse(jsonArray, requestParamsType, scope, interfaceId, beginExtendParentId, packageName, extendsClass, null);
         }
-            return jsonArray;
+        return jsonArray;
     }
 
     /**
@@ -332,8 +345,8 @@ public class Rap2Generator {
      * @author Kings
      * @date 2019.11.02
      */
-    private boolean judgeDayType(String fieldType){
-        return "Date".equals(fieldType) | "LocalDate".equals(fieldType) | "LocalDateTime".equals(fieldType); 
+    private boolean judgeDayType(String fieldType) {
+        return "Date".equals(fieldType) | "LocalDate".equals(fieldType) | "LocalDateTime".equals(fieldType);
     }
 
     /**
@@ -347,23 +360,23 @@ public class Rap2Generator {
      * @author Kings
      * @date 2019.11.02
      */
-    private String getDayPattern(String className, String fieldName){
+    private String getDayPattern(String className, String fieldName) {
         try {
             Class<?> parseClass = Class.forName(className);
             DateTimeFormat dateTimeFormat = parseClass.getDeclaredField(fieldName).getAnnotation(DateTimeFormat.class);
-            if(dateTimeFormat != null){
+            if (dateTimeFormat != null) {
                 return dateTimeFormat.pattern();
             }
             JSONField jsonField = parseClass.getDeclaredField(fieldName).getAnnotation(JSONField.class);
-            if(jsonField != null){
+            if (jsonField != null) {
                 return jsonField.format();
             }
             JsonFormat jsonFormat = parseClass.getDeclaredField(fieldName).getAnnotation(JsonFormat.class);
-            if(jsonFormat != null){
+            if (jsonFormat != null) {
                 return jsonFormat.pattern();
             }
             return "";
-        }catch (Exception e){
+        } catch (Exception e) {
             return "";
         }
     }
@@ -399,7 +412,7 @@ public class Rap2Generator {
         jsonObject.put("scope", scope);
         return jsonObject;
     }
-    
+
 }
 
 
