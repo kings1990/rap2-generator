@@ -53,7 +53,7 @@ public class KingsBankCard {
 <dependency>
     <groupId>io.github.kings1990</groupId>
     <artifactId>rap2-generator</artifactId>
-    <version>1.0.5-RELEASE</version>
+    <version>1.0.6-RELEASE</version>
 </dependency>
 ```
 
