@@ -151,10 +151,13 @@ public class Rap2Generator {
         }
         parentId = "memory-" + responseConfigList.size();
         beginExtendParentId = parentId;
-
-        JSONArray resultResponse = parse(jsonArray, requestParamsType.name(), RESPONSE, interfaceId, parentId, packageName, responseJavaClassname, responseResultData);
-        all.addAll(resultResponse);
-
+        if(StringUtils.isNotBlank(responseJavaClassname) || StringUtils.isNotBlank(responseResultData.getDescription())) {
+            JSONArray resultResponse = parse(jsonArray, requestParamsType.name(), RESPONSE, interfaceId, parentId, packageName, responseJavaClassname, responseResultData);
+            all.addAll(resultResponse);
+        } else {
+            //不解析默认则带上响应模板
+            all.addAll(jsonArray);
+        }
         JSONObject jsonObject = new JSONObject();
         Summary summary = new Summary(bodyOption, requestParamsType);
         jsonObject.put("properties", new JSONArray());
