@@ -38,12 +38,16 @@ public class Rap2Generator {
     private static final String TYPE_NUMBER_EXP = "Integer|int|Short|short|Byte|byte|Long|long|BigDecimal|Float|float|Double|double|Character|char|BigInteger";
     private static final String TYPE_STRING_EXP = "String|Date|LocalDate|LocalDateTime";
     private static final String TYPE_BOOLEAN_EXP = "Boolean|boolean";
-    private static final String TYPE_ARRAY_EXP = "List(.*)|(.*)\\[]";
+    
     private static final String BEGIN_PARSE_CLASS_EXP = "(\\s*|\\t*)public(\\s+abstract)?\\s+class\\s+(\\w+(<\\w+>)?)(\\s+extends\\s+(\\w+)(<\\w+>)?)?(\\s+implements\\s+Serializable)?\\s*\\{";
+    private static final String MAP_PROPERTY_EXP = "^(Map|HashMap|LinkedHashMap|TreeMap|SortedMap|Hashtable)(\\s*|\\t*)(<(.*)>)?$";
+    
     //KingsBankCard[]
     private static final String PARSE_ARRAY_TYPE_EXP = "(.*)\\[]";
     //List<KingsHobby>
-    private static final String PARSE_LIST_TYPE_EXP = "(\\w+)<(.*)>";
+    private static final String PARSE_LIST_TYPE_EXP = "^(List|ArrayList|LinkedList|Set|SortedSet|HashSet|TreeSet)(\\s*|\\t*)(<(.*)>)?$";
+    private static final String TYPE_ARRAY_EXP = PARSE_LIST_TYPE_EXP + "|(.*)\\[]" + "|" + MAP_PROPERTY_EXP;
+    
     private static final String RESPONSE = "response";
     private static final String REQUEST = "request";
     private static Pattern PATTERN_ANNOTATION = Pattern.compile(ANNOTATION_EXP);
@@ -55,10 +59,11 @@ public class Rap2Generator {
     private static Pattern PATTERN_PARSE_ARRAY_TYPE = Pattern.compile(PARSE_ARRAY_TYPE_EXP);
     private static Pattern PATTERN_PARSE_LIST_TYPE = Pattern.compile(PARSE_LIST_TYPE_EXP);
     private static Pattern PATTERN_BEGIN_PARSE_CLASS = Pattern.compile(BEGIN_PARSE_CLASS_EXP);
+    private static Pattern PATTERN_MAP_PROPERTY = Pattern.compile(MAP_PROPERTY_EXP);
+    
     //运算中可变
     private static int IDX = 1;
     private ParseConfig parseConfig;
-    private String beginExtendParentId;
 
     private ParseConfig getParseConfig() {
         return parseConfig;
@@ -150,7 +155,6 @@ public class Rap2Generator {
             IDX++;
         }
         parentId = "memory-" + responseConfigList.size();
-        beginExtendParentId = parentId;
         if(StringUtils.isNotBlank(responseJavaClassname) || StringUtils.isNotBlank(responseResultData.getDescription())) {
             JSONArray resultResponse = parse(jsonArray, requestParamsType.name(), RESPONSE, interfaceId, parentId, packageName, responseJavaClassname, responseResultData);
             all.addAll(resultResponse);
@@ -198,6 +202,7 @@ public class Rap2Generator {
         //时间格式
         Map<String, String> dayFormatMap = new HashMap<>();
         String extendsClass = null;
+        int extendParentIdIdx = 0;
         //response为对象进行解析
         if (responseResultData == null || "Object".equals(dealType(responseResultData.getResponseResultDataType().getExp()))) {
             String path = javaDirPath + className + ".java";
@@ -211,7 +216,8 @@ public class Rap2Generator {
             int checkProperty = 1;
             //检测注释
             int checkAnno = 1;
-
+            
+            /*解析开始************************************************************************************/
             while ((s = bufferedReader.readLine()) != null) {
                 Matcher matcherField = PATTERN_FIELD.matcher(s);
                 Matcher matcherAnnotation = PATTERN_ANNOTATION.matcher(s);
@@ -275,7 +281,9 @@ public class Rap2Generator {
                     }
                 }
             }
-
+            /*解析结束************************************************************************************/
+            
+            /*组装开始************************************************************************************/
             for (int i = 0; i < fieldList.size(); i++) {
                 String fieldString = fieldList.get(i);
                 String annotationString = null;
@@ -306,19 +314,31 @@ public class Rap2Generator {
                     String fileType;
                     Matcher matcherArray = PATTERN_PARSE_ARRAY_TYPE.matcher(type);
                     Matcher matcherList = PATTERN_PARSE_LIST_TYPE.matcher(type);
+                    Matcher matcherMap = PATTERN_MAP_PROPERTY.matcher(type);
                     //数组
                     if (matcherArray.matches()) {
                         fileType = matcherArray.group(1);
-                        //集合    
+                    //集合    
                     } else if (matcherList.matches()) {
-                        fileType = matcherList.group(2);
-                        //对象    
+                        fileType = matcherList.group(4);
+                        //例如List list这种情况默认给一个泛型是object
+                        
+                    //对象    
                     } else {
                         fileType = type;
                     }
                     String filedType = dealType(fileType);
-                    if (!"Object".equals(filedType)) {
-                        jsonObject.put("description", String.format(annotationString + "(%s)", filedType));
+                    if (!"Object".equals(filedType) || matcherMap.matches()) {
+                        //map
+                        if(matcherMap.matches()){
+                            String mapGenericity = matcherMap.group(3);
+                            String description = mapGenericity == null ? annotationString : String.format(annotationString + "(%s)", mapGenericity);
+                            jsonObject.put("description", description);
+                        } else {
+                            //集合
+                            String description = filedType == null ? annotationString : String.format(annotationString + "(%s)", filedType);
+                            jsonObject.put("description", description);
+                        }
                     }
                     jsonArray.add(jsonObject);
                     //只有对象才会递归解析
@@ -329,9 +349,10 @@ public class Rap2Generator {
                     jsonArray.add(jsonObject);
                 }
             }
+            /*组装结束************************************************************************************/
         }
         if (extendsClass != null) {
-            jsonArray = parse(jsonArray, requestParamsType, scope, interfaceId, beginExtendParentId, packageName, extendsClass, null);
+            jsonArray = parse(jsonArray, requestParamsType, scope, interfaceId, parentId, packageName, extendsClass, null);
         }
         return jsonArray;
     }
@@ -383,6 +404,9 @@ public class Rap2Generator {
     }
 
     private String dealType(String fieldType) {
+        if(fieldType == null){
+            return null;
+        }
         String result;
         if (PATTERN_TYPE_NUMBER.matcher(fieldType).matches()) {
             result = "Number";
