@@ -321,8 +321,6 @@ public class Rap2Generator {
                     //集合    
                     } else if (matcherList.matches()) {
                         fileType = matcherList.group(4);
-                        //例如List list这种情况默认给一个泛型是object
-                        
                     //对象    
                     } else {
                         fileType = type;
@@ -351,6 +349,7 @@ public class Rap2Generator {
             }
             /*组装结束************************************************************************************/
         }
+        //继承类解析
         if (extendsClass != null) {
             jsonArray = parse(jsonArray, requestParamsType, scope, interfaceId, parentId, packageName, extendsClass, null);
         }
