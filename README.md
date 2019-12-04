@@ -81,15 +81,6 @@ public class KingsBankCard {
 ## Demo
 仓库地址:[https://github.com/kings1990/rap2-generator-demo](https://github.com/kings1990/rap2-generator-demo)
 
-淘宝rap2插件测试地址(请勿乱删数据)
-
-```
-地址:http://rap2.taobao.org/
-仓库:rap2-generator-test
-账号:rap2-generator@qq.com
-密码:123456
-```
-
 ## Showcase
 基于[淘宝rap2](http://rap2.taobao.org/)的自动化导入.[演示->](https://oscimg.oschina.net/oscnet/99c83368fe39dc4733aa2e8e81676ec3ef9.jpg)
 
