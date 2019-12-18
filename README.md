@@ -87,3 +87,9 @@ public class KingsBankCard {
 ## Contribut
 请查看[CONTRIBUTING.md](https://github.com/kings1990/rap2-generator/blob/master/CONTRIBUTING.md)
 我们非常欢迎你提交好的优质代码和建议
+
+
+## Donate
+项目的发展离不开你的支持，请作者喝杯咖啡吧！
+
+![](https://oscimg.oschina.net/oscnet/up-0fbac9cefa83d1e3084e86f5cd4100990d2.JPEG)
