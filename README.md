@@ -57,6 +57,14 @@ public class KingsBankCard {
 </dependency>
 ```
 
+## Rap2 Generator Web
+下载该项目进行本地部署,定制属于自己的工具
+
+仓库地址:[https://github.com/kings1990/rap2-generator-web](https://github.com/kings1990/rap2-generator-web)
+
+Online
+地址:[http://rap.sheng90.wang/](http://rap.sheng90.wang/)
+
 ## Links
 
 * [Home](https://github.com/kings1990/rap2-generator/wiki)
@@ -90,3 +98,9 @@ public class KingsBankCard {
 ## Contribut
 请查看[CONTRIBUTING.md](https://github.com/kings1990/rap2-generator/blob/master/CONTRIBUTING.md)
 我们非常欢迎你提交好的优质代码和建议
+
+
+## Donate
+项目的发展离不开你的支持，请作者喝杯咖啡吧！
+
+![](https://oscimg.oschina.net/oscnet/up-0fbac9cefa83d1e3084e86f5cd4100990d2.JPEG)
