@@ -99,9 +99,3 @@ Online
 请查看[CONTRIBUTING.md](https://github.com/kings1990/rap2-generator/blob/master/CONTRIBUTING.md)
 我们非常欢迎你提交好的优质代码和建议
 
-
-## Donate
-项目的发展离不开你的支持，请作者喝杯咖啡吧！
-
-<img width="200px" height="200px" src="https://oscimg.oschina.net/oscnet/up-6141a96daef0c833057462dc752f27bdcc1.JPEG"/>
-
