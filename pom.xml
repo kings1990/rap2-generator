@@ -56,7 +56,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.2.1.RELEASE</version>
+            <version>5.2.6.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
