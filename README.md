@@ -90,7 +90,9 @@ Online
 仓库地址:[https://github.com/kings1990/rap2-generator-demo](https://github.com/kings1990/rap2-generator-demo)
 
 ## Online
-地址:[http://rap.sheng90.wang/](http://rap.sheng90.wang/)
+地址:[http://rap.sheng90.wang/](http://rap.sheng90.wang/) 
+
+服务器到期了 参考Rap2 Generator Web自己部署
 
 ## Showcase
 基于[淘宝rap2](http://rap2.taobao.org/)的自动化导入.[演示->](https://oscimg.oschina.net/oscnet/99c83368fe39dc4733aa2e8e81676ec3ef9.jpg)
