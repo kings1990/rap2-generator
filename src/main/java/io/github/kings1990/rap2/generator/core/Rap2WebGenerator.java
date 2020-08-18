@@ -40,7 +40,7 @@ public class Rap2WebGenerator {
     private static final Logger LOGGER = LoggerFactory.getLogger(Rap2WebGenerator.class);
     private static final String TARGET_URL = "/properties/update?itf=%d";
     private static final String ANNOTATION_EXP = "(\\s*|\\t*)\\*(\\s*|\\t*)((?!\\s+|\\s?/).*)|(\\s*|\\t*)/\\**(\\s*|\\t*)(.*)\\*/|(\\s*|\\t*)(//\\s*|//\\t*)(.*)";
-    private static final String FIELD_EXP = "(\\s*|\\t*)(private|protected|public)\\s+(.*)\\s+(\\w+);$";
+    private static final String FIELD_EXP = "(\\s*|\\t*)(private|protected|public)\\s+(?!static|static\\s+final)(\\w+)\\s+(\\w+);$";
     private static final String TYPE_NUMBER_EXP = "Integer|int|Short|short|Byte|byte|Long|long|BigDecimal|Float|float|Double|double|Character|char|BigInteger";
     private static final String TYPE_STRING_EXP = "String|Date|LocalDate|LocalDateTime";
     private static final String TYPE_BOOLEAN_EXP = "Boolean|boolean";
