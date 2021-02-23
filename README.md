@@ -86,9 +86,6 @@ Online
 * 兼容各种类型的属性注释
 * 各种java类型解析
 
-## Demo
-仓库地址:[https://github.com/kings1990/rap2-generator-demo](https://github.com/kings1990/rap2-generator-demo)
-
 ## Online
 地址:[http://rap.sheng90.wang/](http://rap.sheng90.wang/) 
 
