@@ -27,7 +27,7 @@
 </div>
 
 ## What is rap2-generator
-前后端分离利用rap2的时候需要将java实体类的注释拷贝到rap2上,字段一多十分麻烦.本工具实现自动化将实体类解析导入rap2
+前后端分离利用rap2的时候需要将java实体类的注释拷贝到rap2上,字段一多十分麻烦.本工具实现自动化将实体类解析导入[rap2](https://github.com/thx/rap2-delos)
 
 假如你有一个实体类,如下
 
