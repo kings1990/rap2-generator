@@ -63,7 +63,7 @@ public class KingsBankCard {
 仓库地址:***[https://github.com/kings1990/rap2-generator-web](https://github.com/kings1990/rap2-generator-web)***
 
 Online
-地址:[~~http://rap.sheng90.wang~~](http://rap.sheng90.wang/)
+地址:[http://rap.sheng90.wang](http://rap.sheng90.wang/)
 
 ## Links
 
