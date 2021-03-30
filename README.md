@@ -87,7 +87,7 @@ Online
 * 各种java类型解析
 
 ## Online
-地址:[~~~http://rap.sheng90.wang~~~](http://rap.sheng90.wang/) 
+地址:[http://rap.sheng90.wang](http://rap.sheng90.wang/) 
 
 服务器到期了 参考Rap2 Generator Web自己部署
 
